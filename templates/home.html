@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <div class="hero-text">
+    <h1>打造值得信赖的企业官网框架</h1>
+    <p class="lead">此处为主视觉/标语占位。</p>
+    <div class="hero-cta">
+      <a href="{{ url_for('services') }}" class="btn">了解服务</a>
+      <a href="{{ url_for('contact') }}" class="btn btn-secondary">联系我们</a>
+    </div>
+  </div>
+</section>
+
+<section class="grid-3">
+  <article class="card">
+    <h3>我们的优势</h3>
+    <p>简述 3~4 条优势要点（占位）。</p>
+  </article>
+  <article class="card">
+    <h3>核心产品</h3>
+    <p>产品模块的简要说明（占位）。</p>
+  </article>
+  <article class="card">
+    <h3>客户与案例</h3>
+    <p>展示客户 Logo/成功案例摘要（占位）。</p>
+  </article>
+</section>
+{% endblock %}

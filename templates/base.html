@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title or '公司主页' }} - 示例</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="{{ url_for('home') }}">
+          <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="公司Logo" class="logo" />
+          <span class="brand-name">CompanyName</span>
+        </a>
+        <nav class="nav">
+          <a class="nav-link {% if request.path=='/' %}active{% endif %}" href="{{ url_for('home') }}">首页</a>
+          <a class="nav-link {% if request.path.startswith('/about') %}active{% endif %}" href="{{ url_for('about') }}">关于我们</a>
+          <a class="nav-link {% if request.path.startswith('/services') %}active{% endif %}" href="{{ url_for('services') }}">服务</a>
+          <a class="nav-link {% if request.path.startswith('/products') %}active{% endif %}" href="{{ url_for('products') }}">产品</a>
+          <a class="nav-link {% if request.path.startswith('/careers') %}active{% endif %}" href="{{ url_for('careers') }}">加入我们</a>
+          <a class="nav-link {% if request.path.startswith('/contact') %}active{% endif %}" href="{{ url_for('contact') }}">联系</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page">
+      {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+          <div class="flash-wrap">
+            {% for category, message in messages %}
+              <div class="flash flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-col">
+          <h4>CompanyName</h4>
+          <p class="muted">这里是公司的一句话简介（占位）。</p>
+        </div>
+        <div class="footer-col">
+          <h5>快速链接</h5>
+          <ul>
+            <li><a href="{{ url_for('privacy') }}">隐私政策</a></li>
+            <li><a href="{{ url_for('terms') }}">服务条款</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>联系方式</h5>
+          <ul>
+            <li>邮箱：contact@example.com</li>
+            <li>电话：000-0000-0000</li>
+            <li>地址：某某市某某区某某路 123 号</li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <small>© {{ 2025 }} CompanyName. 保留所有权利。</small>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
