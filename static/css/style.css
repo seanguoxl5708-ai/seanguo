@@ -31,22 +31,28 @@ body{background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,
 /* 首页翻页式布局 */
 html { scroll-behavior: smooth; }
 
-.section-hero{
+.section-hero {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;                /* 设置为100vh，确保高度严格等于视口高度 */
   display: grid;
   place-items: center;
   background: #000;
   background-image: var(--hero);
-  background-size: cover;
-  background-position: center center;
+  background-size: cover;      /* 确保图片完全覆盖 */
+  background-position: top center;  /* 图片从顶部对齐，避免下滑 */
+  background-repeat: no-repeat;
+  margin-left: 0;
+  margin-right: 0;
 }
 .section-hero .hero-overlay{
   position:absolute; inset:0;
   background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35));
 }
-.section-hero .hero-inner{
-  position:relative; z-index:1; text-align:center; padding:0 20px;
+.section-hero .hero-inner {
+  position: relative;
+  z-index: 2;  /* 增加z-index确保文字在最上层 */
+  text-align: center;
+  padding: 0 20px;
 }
 /* 让首屏 section 突破 container 的 1100px 限宽，铺满整个视口宽度 */
 .section-hero{
@@ -62,6 +68,21 @@ html { scroll-behavior: smooth; }
 .hero-title{ font-size: clamp(28px, 5vw, 56px); font-weight: 800; letter-spacing:-.3px; }
 .hero-lead{ color: var(--muted); max-width: 760px; margin: 10px auto 0; }
 .hero-cta{ display:flex; gap:12px; justify-content:center; margin-top:18px; flex-wrap:wrap; }
+.hero-cta .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: transparent;           /* 透明背景 */
+  color: #fff;                       /* 白色文字 */
+  border: 1px solid #fff;            /* 白色虚线边框 */
+  text-decoration: none;
+  border-style: dashed;              /* 虚线 */
+}
+.hero-cta .btn:hover {
+  background: rgba(255, 255, 255, 0.1);  /* 悬停时轻微背景色变化 */
+}
 
 .scroll-cue{
   position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
