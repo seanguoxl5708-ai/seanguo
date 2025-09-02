@@ -1,57 +1,190 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, make_response, flash
+import i18n
+
+# app.py 顶部（import 后）
+ACHIEVEMENTS = [
+    {
+        "id": "clients",
+        "value": 120,           # 数值
+        "suffix": "+",          # 后缀，如 %、+
+        "label": {
+            "zh-CN": "服务客户",
+            "zh-TW": "服務客戶",
+            "en": "Clients"
+        }
+    },
+    {
+        "id": "aum",
+        "value": 30,
+        "suffix": "B",
+        "label": {
+            "zh-CN": "资产规模（USD）",
+            "zh-TW": "資產規模（USD）",
+            "en": "AUM (USD)"
+        }
+    },
+    {
+        "id": "years",
+        "value": 15,
+        "suffix": "y",
+        "label": {
+            "zh-CN": "行业经验",
+            "zh-TW": "行業經驗",
+            "en": "Years in business"
+        }
+    }
+]
+
+# 建议：放在文件顶部（import 之后）
+PEOPLE = [
+    {
+        "slug": "alice-zhang",                  # 用于URL：/people/alice-zhang
+        "name": "Alice Zhang",
+        "title": "Head of Strategy",
+        "photo": "img/people/alice.jpeg",        # 相对 static/ 路径
+        "summary": {                            # 列表页的一句话简介（可选）
+            "en": "Strategy & partnerships",
+            "zh-CN": "战略与合作",
+            "zh-TW": "策略與合作"
+        },
+        "bio": {                                # 详情页正文简介（可选）
+            "en": "Alice leads strategy and partnerships. Previously at ...",
+            "zh-CN": "负责战略与合作，曾就职于……",
+            "zh-TW": "負責策略與合作，曾任職於……"
+        }
+    },
+    {
+        "slug": "bob-lee",
+        "name": "Bob Lee",
+        "title": "Engineering Lead",
+        "photo": "img/people/bob.jpeg",
+        "summary": {
+            "en": "Engineering & platform",
+            "zh-CN": "工程与平台",
+            "zh-TW": "工程與平台"
+        },
+        "bio": {
+            "en": "Bob builds reliable systems and teams...",
+            "zh-CN": "负责工程与平台可靠性……",
+            "zh-TW": "負責工程與平台可靠性……"
+        }
+    },
+    # …继续按这个格式添加更多成员
+]
+
+def _latest_news(limit=3):
+    """可选：读取 content/news 下的 Markdown 文章，取最近 N 篇。
+       若未安装 frontmatter/markdown 或无目录，返回空列表。"""
+    try:
+        import os, glob, datetime
+        import frontmatter
+        NEWS_DIR = os.path.join(os.path.dirname(__file__), "content", "news")
+        posts = []
+        for path in glob.glob(os.path.join(NEWS_DIR, "*.md")):
+            post = frontmatter.load(path)
+            slug = os.path.splitext(os.path.basename(path))[0]
+            date = post.get("date")
+            try:
+                date = datetime.date.fromisoformat(str(date)) if date else None
+            except Exception:
+                date = None
+            posts.append({
+                "slug": slug,
+                "title": post.get("title", slug),
+                "summary": post.get("summary", ""),
+                "date": date
+            })
+        posts.sort(key=lambda p: p["date"] or datetime.date.min, reverse=True)
+        return posts[:limit]
+    except Exception:
+        return []
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key')
 
+    @app.before_request
+    def _set_lang():
+        lang = request.cookies.get("lang") or i18n.get_lang_from_request()
+        i18n.set_current_lang(lang)
+
+    @app.context_processor
+    def _inject_t():
+        return {"t": i18n.t, "current_lang": i18n.get_current_lang()}
+
+    @app.route('/set-lang/<lang>')
+    def set_lang(lang):
+        nxt = request.args.get('next') or request.referrer or url_for('home')
+        if lang not in i18n.SUPPORTED:
+            lang = i18n.DEFAULT
+        resp = make_response(redirect(nxt))
+        resp.set_cookie('lang', lang, max_age=60*60*24*365, httponly=False, samesite="Lax")
+        return resp
+
     @app.route('/')
     def home():
-        return render_template('home.html', title='首页')
+        return render_template('home.html', title='Home')
 
     @app.route('/about')
     def about():
-        return render_template('about.html', title='关于我们')
+        # i18n 衔接：你之前已集成多语言，会有 current_lang 注入模板
+        return render_template('about.html', title='About', people=PEOPLE)
+
+    @app.route('/people/<slug>')
+    def person_detail(slug):
+        person = next((p for p in PEOPLE if p["slug"] == slug), None)
+        if not person:
+            return render_template('404.html', title='Not found'), 404
+        return render_template('person_detail.html', title=person["name"], person=person)
 
     @app.route('/services')
     def services():
-        return render_template('services.html', title='服务')
+        return render_template('services.html', title='Services')
+    
+    @app.route('/services/consulting')
+    def services_consulting():
+        return render_template('services_consulting.html', title='Consulting')
+
+    @app.route('/services/implementation')
+    def services_implementation():
+        return render_template('services_implementation.html', title='Implementation')
+
+    @app.route('/services/operations')
+    def services_operations():
+        return render_template('services_operations.html', title='Operations')
+
 
     @app.route('/products')
     def products():
-        return render_template('products.html', title='产品')
+        return render_template('products.html', title='Products')
 
     @app.route('/careers')
     def careers():
-        return render_template('careers.html', title='加入我们')
+        return render_template('careers.html', title='Careers')
 
-    @app.route('/contact', methods=['GET', 'POST'])
+    @app.route('/contact', methods=['GET','POST'])
     def contact():
         if request.method == 'POST':
-            name = request.form.get('name')
-            email = request.form.get('email')
-            message = request.form.get('message')
-            print(f"[CONTACT] name={name} email={email} message={message}")
-            flash('已收到您的留言，我们会尽快联系您。', 'success')
+            flash('Thanks! This is a demo; no emails are sent.', 'success')
             return redirect(url_for('contact'))
-        return render_template('contact.html', title='联系')
+        return render_template('contact.html', title='Contact')
 
     @app.route('/privacy')
     def privacy():
-        return render_template('privacy.html', title='隐私政策')
+        return render_template('privacy.html', title='Privacy')
 
     @app.route('/terms')
     def terms():
-        return render_template('terms.html', title='服务条款')
+        return render_template('terms.html', title='Terms')
 
     @app.errorhandler(404)
-    def page_not_found(e):
-        return render_template('404.html', title='页面未找到'), 404
+    def not_found(e):
+        return render_template('404.html', title='Not found'), 404
 
     return app
 
-# Module-level app for local development convenience
 app = create_app()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)

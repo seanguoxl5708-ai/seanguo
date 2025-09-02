@@ -1,0 +1,77 @@
+{
+  "brand": {
+    "name": "CompanyName",
+    "tagline": "这里是公司的一句话简介（占位）。"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务",
+    "products": "产品",
+    "careers": "加入我们",
+    "contact": "联系",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "quick_links": "快速链接",
+    "language": "语言",
+    "lang_en": "English",
+    "lang_zh_cn": "简体中文",
+    "lang_zh_tw": "繁體中文"
+  },
+  "home": {
+    "hero_title": "打造值得信赖的企业官网框架",
+    "hero_lead": "此处为主视觉/标语占位。",
+    "cta_services": "了解服务",
+    "cta_contact": "联系我们",
+    "adv": "我们的优势",
+    "prod_core": "核心产品",
+    "clients": "客户与案例",
+    "intro_more": "可放第二段：如牌照信息、合规与风控理念、地域覆盖或团队优势。",
+    "achievements": "我们的成就",
+    "latest_news": "最新动态",
+    "more": "全部新闻 →"
+  },
+  "about": {
+    "title": "关于我们",
+    "muted": "公司简介、愿景使命、发展历程、团队照片/组织架构等内容（占位）。",
+    "mission": "使命与愿景",
+    "timeline": "里程碑"
+  },
+  "services": {
+    "title": "服务",
+    "muted": "服务分类与说明（占位）。",
+    "a": "咨询顾问",
+    "b": "技术实施",
+    "c": "运维支持"
+  },
+  "products": {
+    "title": "产品",
+    "muted": "产品卡片/功能列表/价格方案（占位）。",
+    "a": "产品A",
+    "b": "产品B",
+    "c": "产品C"
+  },
+  "careers": {
+    "title": "加入我们",
+    "muted": "企业文化、岗位列表、招聘流程（占位）。",
+    "why": "为什么加入",
+    "openings": "开放岗位"
+  },
+  "contact": {
+    "title": "联系",
+    "muted": "如需合作或了解更多，请填写以下信息（占位）。",
+    "name": "您的称呼",
+    "email": "邮箱",
+    "message": "留言",
+    "submit": "提交",
+    "note": "* 当前为演示站点，不会发送外部邮件。"
+  },
+  "legal": {
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "rights": "保留所有权利。"
+  },
+  "notfound": {
+    "title": "页面未找到"
+  }
+}

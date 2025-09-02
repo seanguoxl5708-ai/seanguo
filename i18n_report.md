@@ -1,0 +1,98 @@
+# i18n Report
+
+- Default language: **zh-CN**
+- Total used keys: **67**
+
+## zh-CN
+- Present keys: 55
+- Missing keys: 19
+  - --autofix
+  - --default
+  - --report
+  - --root
+  - --write
+  - .
+  - ...
+  - Accept-Language
+  - SECRET_KEY
+  - [DRY-RUN] Missing keys would be autofilled. Re-run with --write to save changes.
+  - [OK] Missing keys have been autofilled and files updated.
+  - [OK] No missing keys to autofix.
+  - date
+  - en
+  - key
+  - lang
+  - next
+  - summary
+  - title
+- Unused keys: 7
+  - about.mission
+  - about.timeline
+  - home.adv
+  - home.prod_core
+  - legal.privacy
+  - legal.rights
+  - legal.terms
+
+## en
+- Present keys: 56
+- Missing keys: 19
+  - --autofix
+  - --default
+  - --report
+  - --root
+  - --write
+  - .
+  - ...
+  - Accept-Language
+  - SECRET_KEY
+  - [DRY-RUN] Missing keys would be autofilled. Re-run with --write to save changes.
+  - [OK] Missing keys have been autofilled and files updated.
+  - [OK] No missing keys to autofix.
+  - date
+  - en
+  - key
+  - lang
+  - next
+  - summary
+  - title
+- Unused keys: 8
+  - about.mission
+  - about.timeline
+  - home.adv
+  - home.clients_points
+  - home.prod_core
+  - legal.privacy
+  - legal.rights
+  - legal.terms
+
+## zh-TW
+- Present keys: 55
+- Missing keys: 19
+  - --autofix
+  - --default
+  - --report
+  - --root
+  - --write
+  - .
+  - ...
+  - Accept-Language
+  - SECRET_KEY
+  - [DRY-RUN] Missing keys would be autofilled. Re-run with --write to save changes.
+  - [OK] Missing keys have been autofilled and files updated.
+  - [OK] No missing keys to autofix.
+  - date
+  - en
+  - key
+  - lang
+  - next
+  - summary
+  - title
+- Unused keys: 7
+  - about.mission
+  - about.timeline
+  - home.adv
+  - home.prod_core
+  - legal.privacy
+  - legal.rights
+  - legal.terms

@@ -3,23 +3,50 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ title or '公司主页' }} - 示例</title>
+    <title>{{ t('brand.name') }} - 示例</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lang.css') }}">
   </head>
   <body>
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="{{ url_for('home') }}">
-          <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="公司Logo" class="logo" />
-          <span class="brand-name">CompanyName</span>
+          <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo" class="logo" />
+          <span class="brand-name">{{ t('brand.name') }}</span>
         </a>
         <nav class="nav">
-          <a class="nav-link {% if request.path=='/' %}active{% endif %}" href="{{ url_for('home') }}">首页</a>
-          <a class="nav-link {% if request.path.startswith('/about') %}active{% endif %}" href="{{ url_for('about') }}">关于我们</a>
-          <a class="nav-link {% if request.path.startswith('/services') %}active{% endif %}" href="{{ url_for('services') }}">服务</a>
-          <a class="nav-link {% if request.path.startswith('/products') %}active{% endif %}" href="{{ url_for('products') }}">产品</a>
-          <a class="nav-link {% if request.path.startswith('/careers') %}active{% endif %}" href="{{ url_for('careers') }}">加入我们</a>
-          <a class="nav-link {% if request.path.startswith('/contact') %}active{% endif %}" href="{{ url_for('contact') }}">联系</a>
+          <a class="nav-link {% if request.path=='/' %}active{% endif %}" href="{{ url_for('home') }}">{{ t('nav.home') }}</a>
+          <a class="nav-link {% if request.path.startswith('/about') %}active{% endif %}" href="{{ url_for('about') }}">{{ t('nav.about') }}</a>
+          <!-- <a class="nav-link {% if request.path.startswith('/services') %}active{% endif %}" href="{{ url_for('services') }}">{{ t('nav.services') }}</a> -->
+          <!-- 替换原来的“服务”链接为带下拉的结构 -->
+          <div class="nav-item dropdown {% if request.path.startswith('/services') %}active{% endif %}">
+            <a class="nav-link" href="{{ url_for('services') }}">
+              {{ t('services.title') }}
+              <svg aria-hidden="true" width="12" height="12" viewBox="0 0 20 20" style="margin-left:6px"><path d="M5 7l5 5 5-5" fill="currentColor"/></svg>
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{{ url_for('services_consulting') }}">{{ t('services.a') }}</a>
+              <a class="dropdown-item" href="{{ url_for('services_implementation') }}">{{ t('services.b') }}</a>
+              <a class="dropdown-item" href="{{ url_for('services_operations') }}">{{ t('services.c') }}</a>
+            </div>
+          </div>
+          <a class="nav-link {% if request.path.startswith('/products') %}active{% endif %}" href="{{ url_for('products') }}">{{ t('nav.products') }}</a>
+          <a class="nav-link {% if request.path.startswith('/careers') %}active{% endif %}" href="{{ url_for('careers') }}">{{ t('nav.careers') }}</a>
+          <a class="nav-link {% if request.path.startswith('/contact') %}active{% endif %}" href="{{ url_for('contact') }}">{{ t('nav.contact') }}</a>
+          
+          <div class="lang-switch">
+            <button id="lang-btn" class="lang-btn" onclick="toggleLangMenu()" aria-haspopup="true" aria-expanded="false" title="{{ t('nav.language') }}">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 s10-4.48 10-10S17.52 2 12 2zm0 2c1.74 0 3.41.56 4.75 1.5H7.25A7.93 7.93 0 0 1 12 4zm-6.32 3.5h12.64c.45.76.79 1.6.99 2.5H4.69c.2-.9.54-1.74.99-2.5zM4.07 13h15.86a8.08 8.08 0 0 1-1.02 2.5H5.09A8.08 8.08 0 0 1 4.07 13zm2.18 4.5h11.5A7.93 7.93 0 0 1 12 20a7.93 7.93 0 0 1-5.75-2.5z"/>
+              </svg>
+              <span>{{ current_lang }}</span>
+            </button>
+            <div id="lang-menu" class="lang-menu" role="menu" aria-labelledby="lang-btn">
+              <a href="{{ url_for('set_lang', lang='zh-CN', _external=False) }}?next={{ request.path }}" role="menuitem"><span class="lang-flag"></span>{{ t('nav.lang_zh_cn') }}</a>
+              <a href="{{ url_for('set_lang', lang='en', _external=False) }}?next={{ request.path }}" role="menuitem"><span class="lang-flag"></span>{{ t('nav.lang_en') }}</a>
+              <a href="{{ url_for('set_lang', lang='zh-TW', _external=False) }}?next={{ request.path }}" role="menuitem"><span class="lang-flag"></span>{{ t('nav.lang_zh_tw') }}</a>
+            </div>
+          </div>
         </nav>
       </div>
     </header>
@@ -40,30 +67,30 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-col">
-          <h4>CompanyName</h4>
-          <p class="muted">这里是公司的一句话简介（占位）。</p>
+          <h4>{{ t('brand.name') }}</h4>
+          <p class="muted">{{ t('brand.tagline') }}</p>
         </div>
         <div class="footer-col">
-          <h5>快速链接</h5>
+          <h5>{{ t('nav.quick_links') }}</h5>
           <ul>
-            <li><a href="{{ url_for('privacy') }}">隐私政策</a></li>
-            <li><a href="{{ url_for('terms') }}">服务条款</a></li>
+            <li><a href="{{ url_for('privacy') }}">{{ t('nav.privacy') }}</a></li>
+            <li><a href="{{ url_for('terms') }}">{{ t('nav.terms') }}</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h5>联系方式</h5>
+          <h5>{{ t('nav.contact') }}</h5>
           <ul>
-            <li>邮箱：contact@example.com</li>
-            <li>电话：000-0000-0000</li>
-            <li>地址：某某市某某区某某路 123 号</li>
+            <li>Email：contact@example.com</li>
+            <li>Tel：000-0000-0000</li>
+            <li>Address：Somewhere</li>
           </ul>
         </div>
       </div>
       <div class="container footer-bottom">
-        <small>© {{ 2025 }} CompanyName. 保留所有权利。</small>
+        <small>© {{ 2025 }} {{ t('brand.name') }}.</small>
       </div>
     </footer>
-
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/lang.js') }}"></script>
   </body>
 </html>
+<script src="{{ url_for('static', filename='js/nav.js') }}"></script>

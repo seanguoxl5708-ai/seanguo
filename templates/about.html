@@ -1,9 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>关于我们</h1>
-<p class="muted">公司简介、愿景使命、发展历程、团队照片/组织架构等内容（占位）。</p>
-<section class="grid-2">
-  <div class="card"><h3>使命与愿景</h3><p>内容占位。</p></div>
-  <div class="card"><h3>里程碑</h3><p>时间线占位。</p></div>
-</section>
+  <p class="lead">我们是一支专注于 XXX 领域的团队，这里是一句简短介绍（占位）。</p>
+
+  {% set cur = current_lang if current_lang is defined else 'en' %}
+
+  <section class="grid-3">
+    {% for p in people %}
+      <article class="card person">
+        <img class="avatar" src="{{ url_for('static', filename=p.photo) }}" alt="{{ p.name }}">
+        <h3 class="name">{{ p.name }}</h3>
+        <div class="title">{{ p.title }}</div>
+
+        {% set sum = (p.summary[cur] if p.summary and p.summary.get(cur) else (p.summary['en'] if p.summary and p.summary.get('en') else '')) %}
+        {% if sum %}<p class="muted">{{ sum }}</p>{% endif %}
+
+        <a class="btn" href="{{ url_for('person_detail', slug=p.slug) }}">查看详情</a>
+      </article>
+    {% endfor %}
+  </section>
+
+  <style>
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .person .avatar{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;margin-bottom:10px}
+    .person .name{margin:6px 0 2px}
+    .person .title{color:#9aa0aa;font-size:14px;margin-bottom:6px}
+    @media (max-width: 900px){ .grid-3{grid-template-columns:1fr} }
+  </style>
 {% endblock %}

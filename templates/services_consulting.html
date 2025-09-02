@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ t('services.a', '咨询顾问') }}</h1>
+  <p class="muted">这里是咨询顾问服务的介绍段落（占位）。可以放目标客户、典型场景、交付物、流程等。</p>
+  <section class="grid-2">
+    <div class="card">
+      <h3>我们提供</h3>
+      <ul class="bullets">
+        <li>资产配置框架设计</li>
+        <li>专题研究与尽调</li>
+        <li>投策审阅与复盘</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>价值体现</h3>
+      <p>以可度量、可执行的建议，帮助客户高效决策。</p>
+    </div>
+  </section>
+{% endblock %}

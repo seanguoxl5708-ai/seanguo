@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ t('services.b', '技术实施') }}</h1>
+  <p class="muted">这里是技术实施服务的介绍段落（占位）。可描述组合构建、交易执行、风控、数据接入等。</p>
+  <section class="grid-2">
+    <div class="card">
+      <h3>实施范围</h3>
+      <ul class="bullets">
+        <li>组合构建与再平衡</li>
+        <li>交易通道与执行</li>
+        <li>风控规则与监测</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>交付方式</h3>
+      <p>项目制 / 常年服务；可配置仪表盘与报告模板。</p>
+    </div>
+  </section>
+{% endblock %}

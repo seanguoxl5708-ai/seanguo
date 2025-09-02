@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% set cur = current_lang if current_lang is defined else 'en' %}
+
+  <article class="person-detail">
+    <div class="hero">
+      <img class="avatar" src="{{ url_for('static', filename=person.photo) }}" alt="{{ person.name }}">
+      <div class="meta">
+        <h1>{{ person.name }}</h1>
+        <div class="title">{{ person.title }}</div>
+      </div>
+    </div>
+
+    {% set bio = (person.bio[cur] if person.bio and person.bio.get(cur) else (person.bio['en'] if person.bio and person.bio.get('en') else '')) %}
+    {% if bio %}
+      <div class="prose"><p>{{ bio }}</p></div>
+    {% else %}
+      <p class="muted">暂无详细介绍。</p>
+    {% endif %}
+
+    <p style="margin-top:24px"><a href="{{ url_for('about') }}">← 返回关于我们</a></p>
+  </article>
+
+  <style>
+    .person-detail .hero{display:flex;gap:16px;align-items:center;margin-bottom:12px}
+    .person-detail .avatar{width:120px;height:120px;border-radius:12px;object-fit:cover}
+    .person-detail .title{color:#9aa0aa}
+    .prose p{margin:0 0 12px}
+    @media (max-width: 700px){ .person-detail .hero{flex-direction:column;align-items:flex-start} }
+  </style>
+{% endblock %}

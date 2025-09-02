@@ -1,10 +1,1 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1>服务</h1>
-<p class="muted">服务分类与说明（占位）。</p>
-<section class="grid-3">
-  <div class="card"><h3>咨询顾问</h3><p>占位。</p></div>
-  <div class="card"><h3>技术实施</h3><p>占位。</p></div>
-  <div class="card"><h3>运维支持</h3><p>占位。</p></div>
-</section>
-{% endblock %}
+{% extends 'base.html' %}{% block content %}<h1>{{ t('services.title') }}</h1><p class='muted'>{{ t('services.muted') }}</p><section class='grid-3'><div class='card'><h3>{{ t('services.a') }}</h3><p>...</p></div><div class='card'><h3>{{ t('services.b') }}</h3><p>...</p></div><div class='card'><h3>{{ t('services.c') }}</h3><p>...</p></div></section>{% endblock %}

@@ -1,0 +1,83 @@
+{
+  "brand": {
+    "name": "CompanyName",
+    "tagline": "One-line company blurb (placeholder)."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "products": "Products",
+    "careers": "Careers",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "quick_links": "Quick links",
+    "language": "Language",
+    "lang_en": "English",
+    "lang_zh_cn": "简体中文",
+    "lang_zh_tw": "繁體中文"
+  },
+  "home": {
+    "hero_title": "Build a trustworthy corporate website framework",
+    "hero_lead": "Hero copy goes here — your concise value proposition.",
+    "cta_services": "Learn more",
+    "cta_contact": "Contact us",
+    "adv": "Our strengths",
+    "prod_core": "Core products",
+    "clients": "Clients & case studies",
+    "clients_points": [
+      "Cross-border asset allocation / Family office solutions",
+      "Institutional advisory / Customized portfolios",
+      "Tech-enabled research & risk management"
+    ],
+    "intro_more": "Optionally a second paragraph: licenses, risk & compliance, coverage, team strengths.",
+    "achievements": "Our achievements",
+    "latest_news": "Latest news",
+    "more": "All news →"
+    
+  },
+  "about": {
+    "title": "About us",
+    "muted": "Company intro, mission/vision, history, team/org (placeholder).",
+    "mission": "Mission & vision",
+    "timeline": "Milestones"
+  },
+  "services": {
+    "title": "Services",
+    "muted": "Service categories and descriptions (placeholder).",
+    "a": "Advisory",
+    "b": "Implementation",
+    "c": "Operations support"
+  },
+  "products": {
+    "title": "Products",
+    "muted": "Product cards / feature lists / pricing (placeholder).",
+    "a": "Product A",
+    "b": "Product B",
+    "c": "Product C"
+  },
+  "careers": {
+    "title": "Careers",
+    "muted": "Culture, openings, hiring process (placeholder).",
+    "why": "Why join us",
+    "openings": "Open roles"
+  },
+  "contact": {
+    "title": "Contact",
+    "muted": "For inquiries, please fill the form (placeholder).",
+    "name": "Your name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send",
+    "note": "* Demo only — no external emails are sent."
+  },
+  "legal": {
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "rights": "All rights reserved."
+  },
+  "notfound": {
+    "title": "Page not found"
+  }
+}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ t('services.c', '运维支持') }}</h1>
+  <p class="muted">这里是运维支持服务的介绍段落（占位）。可放日常报告、合规配合、数据保障等。</p>
+  <section class="grid-2">
+    <div class="card">
+      <h3>日常工作</h3>
+      <ul class="bullets">
+        <li>定期/按需报告与披露</li>
+        <li>合规稽核对接</li>
+        <li>数据校验与留痕</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>服务保障</h3>
+      <p>明确 SLA、支持热线/工单、紧急响应机制。</p>
+    </div>
+  </section>
+{% endblock %}

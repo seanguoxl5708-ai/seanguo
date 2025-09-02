@@ -1,0 +1,77 @@
+{
+  "brand": {
+    "name": "CompanyName",
+    "tagline": "這裡是一句公司簡介（佔位）。"
+  },
+  "nav": {
+    "home": "首頁",
+    "about": "關於我們",
+    "services": "服務",
+    "products": "產品",
+    "careers": "加入我們",
+    "contact": "聯絡我們",
+    "privacy": "隱私權政策",
+    "terms": "服務條款",
+    "quick_links": "快速連結",
+    "language": "語言",
+    "lang_en": "English",
+    "lang_zh_cn": "简体中文",
+    "lang_zh_tw": "繁體中文"
+  },
+  "home": {
+    "hero_title": "打造值得信賴的企業官網框架",
+    "hero_lead": "主視覺標語（佔位）。",
+    "cta_services": "了解服務",
+    "cta_contact": "聯絡我們",
+    "adv": "我們的優勢",
+    "prod_core": "核心產品",
+    "clients": "客戶與案例",
+    "intro_more": "可放第二段：如牌照資訊、合規與風控理念、地域覆蓋或團隊優勢。",
+    "achievements": "我們的成就",
+    "latest_news": "最新動態",
+    "more": "全部新聞 →"
+  },
+  "about": {
+    "title": "關於我們",
+    "muted": "公司簡介、願景使命、發展歷程、團隊/組織架構等（佔位）。",
+    "mission": "使命與願景",
+    "timeline": "里程碑"
+  },
+  "services": {
+    "title": "服務",
+    "muted": "服務分類與說明（佔位）。",
+    "a": "顧問諮詢",
+    "b": "技術實施",
+    "c": "運維支援"
+  },
+  "products": {
+    "title": "產品",
+    "muted": "產品卡片/功能列表/價格方案（佔位）。",
+    "a": "產品A",
+    "b": "產品B",
+    "c": "產品C"
+  },
+  "careers": {
+    "title": "加入我們",
+    "muted": "企業文化、職缺、招聘流程（佔位）。",
+    "why": "為什麼加入",
+    "openings": "職缺列表"
+  },
+  "contact": {
+    "title": "聯絡我們",
+    "muted": "如需合作或了解更多，請填寫以下資訊（佔位）。",
+    "name": "您的稱呼",
+    "email": "電子郵件",
+    "message": "留言",
+    "submit": "送出",
+    "note": "* 目前為示範站點，不會寄出外部郵件。"
+  },
+  "legal": {
+    "privacy": "隱私權政策",
+    "terms": "服務條款",
+    "rights": "版權所有。"
+  },
+  "notfound": {
+    "title": "找不到頁面"
+  }
+}
