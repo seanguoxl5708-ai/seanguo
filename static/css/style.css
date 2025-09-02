@@ -1,6 +1,6 @@
 :root{
   --bg:#0f1115; --text:#e6e6e9; --muted:#9aa0aa; --card:#151823; --line:#23283b;
-  --brand:#4f46e5;
+  --brand:#4f46e5; 
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -33,13 +33,13 @@ html { scroll-behavior: smooth; }
 
 .section-hero {
   position: relative;
-  height: 100vh;                /* 设置为100vh，确保高度严格等于视口高度 */
+  height: 88vh;  /* 确保背景图片填满整个屏幕 */
   display: grid;
   place-items: center;
   background: #000;
   background-image: var(--hero);
-  background-size: cover;      /* 确保图片完全覆盖 */
-  background-position: top center;  /* 图片从顶部对齐，避免下滑 */
+  background-size: cover;  /* 确保背景图填满屏幕 */
+  background-position: center;  /* 图片居中 */
   background-repeat: no-repeat;
   margin-left: 0;
   margin-right: 0;
