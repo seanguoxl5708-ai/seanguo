@@ -65,8 +65,24 @@ html { scroll-behavior: smooth; }
   background-repeat: no-repeat;
 }
 
-.hero-title{ font-size: clamp(28px, 5vw, 56px); font-weight: 800; letter-spacing:-.3px; }
-.hero-lead{ color: var(--muted); max-width: 760px; margin: 10px auto 0; }
+.hero-title {
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  text-align: left;  /* 调整标题文字对齐方式为左对齐 */
+  padding-left: 20px; /* 给标题加点左边距 */
+  font-family: 'Microsoft YaHei', Arial, sans-serif;  /* 设置等线字体 */
+  max-width: 600px; /* 控制标题最大宽度 */
+}
+
+.hero-lead {
+  color: var(--muted);
+  max-width: 760px;
+  margin: 10px auto 0;
+  text-align: left;  /* 调整副标题文字对齐方式为左对齐 */
+  padding-left: 20px; /* 给副标题加点左边距 */
+  font-family: 'Microsoft YaHei', Arial, sans-serif;  /* 设置等线字体 */
+}
 .hero-cta{ display:flex; gap:12px; justify-content:center; margin-top:18px; flex-wrap:wrap; }
 .hero-cta .btn {
   display: inline-flex;
