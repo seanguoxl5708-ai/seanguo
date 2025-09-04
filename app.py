@@ -40,18 +40,30 @@ ACHIEVEMENTS = [
 PEOPLE = [
     {
         "slug": "alice-zhang",                  # 用于URL：/people/alice-zhang
-        "name": "Alice Zhang",
+        "name": "Wang Yuqi",
         "title": "Head of Strategy",
-        "photo": "img/people/alice.jpeg",        # 相对 static/ 路径
+        "photo": "img/people/wyq.jpeg",        # 相对 static/ 路径
         "summary": {                            # 列表页的一句话简介（可选）
             "en": "Strategy & partnerships",
-            "zh-CN": "战略与合作",
-            "zh-TW": "策略與合作"
+            "zh-CN": "首席执行长",
+            "zh-TW": "首席執行長"
         },
         "bio": {                                # 详情页正文简介（可选）
             "en": "Alice leads strategy and partnerships. Previously at ...",
             "zh-CN": "负责战略与合作，曾就职于……",
-            "zh-TW": "負責策略與合作，曾任職於……"
+            "zh-TW": """王宇琪先生在財富管理方面擁有超過20年的經驗。 
+創立量子基石前, 他曾擔任華瑞的董事顧問和高級合夥人, 並負責香港分公司的業務。
+ 
+ 
+憑藉超過20年的銀行業經驗，他為該職位帶來了廣泛的知識和專業技能。王先生在金融和信託事務方面有著扎實的背景，使他成為一名值得信賴的顧問。
+ 
+王先生於2002年在高盛開始了他的職業生涯，並憑藉他的工作熱情和奉獻精神迅速晉升。
+ 
+他曾在Avanta Assets Investment Management Ltd.、中國國際金融股份有限公司、巴克萊財富管理/新加坡銀行和瑞士信貸擔任領導職務，
+ 
+成功領導了管理數十億美元資產的團隊，展示了他提供卓越結果的能力。
+ 
+王宇琪先生擁有清華大學的工程學學士學位、芝加哥大學的工商管理碩士學位以及特許金融分析師（CFA）資格。"""
         }
     },
     {
