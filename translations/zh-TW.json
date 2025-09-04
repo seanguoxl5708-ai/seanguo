@@ -1,6 +1,6 @@
 {
   "brand": {
-    "name": "CompanyName",
+    "name": "量子基石",
     "tagline": "這裡是一句公司簡介（佔位）。"
   },
   "nav": {
@@ -19,9 +19,9 @@
     "lang_zh_tw": "繁體中文"
   },
   "home": {
-    "hero_title": "打造值得信賴的企業官網框架",
-    "hero_lead": "主視覺標語（佔位）。",
-    "cta_services": "了解服務",
+    "hero_title": "我們致力於為客戶提供卓越的服務，助力他們在競爭中脫穎而出。",
+    "hero_lead": "公司标语。",
+    "cta_services": "了解更多",
     "cta_contact": "聯絡我們",
     "adv": "我們的優勢",
     "prod_core": "核心產品",

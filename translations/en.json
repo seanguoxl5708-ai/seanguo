@@ -1,6 +1,6 @@
 {
   "brand": {
-    "name": "CompanyName",
+    "name": "Quantum Foundation",
     "tagline": "One-line company blurb (placeholder)."
   },
   "nav": {
@@ -19,8 +19,8 @@
     "lang_zh_tw": "繁體中文"
   },
   "home": {
-    "hero_title": "Build a trustworthy corporate website framework",
-    "hero_lead": "Hero copy goes here — your concise value proposition.",
+    "hero_title": "We are committed to providing our clients with exceptional service, empowering them to stand out in the competition.",
+    "hero_lead": "Company tagline.",
     "cta_services": "Learn more",
     "cta_contact": "Contact us",
     "adv": "Our strengths",

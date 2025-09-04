@@ -40,48 +40,52 @@ ACHIEVEMENTS = [
 PEOPLE = [
     {
         "slug": "alice-zhang",                  # 用于URL：/people/alice-zhang
-        "name": "Wang Yuqi",
-        "title": "Head of Strategy",
+        "name": {                            # 列表页的一句话简介（可选）
+            "en": "Wang Yuqi",
+            "zh-CN": "王宇琪",
+            "zh-TW": "王宇琪"
+        },
+        "title": {                            # 列表页的一句话简介（可选）
+            "en": "Chief Executive Officer",
+            "zh-CN": "首席执行官",
+            "zh-TW": "首席執行長"
+        },
         "photo": "img/people/wyq.jpeg",        # 相对 static/ 路径
         "summary": {                            # 列表页的一句话简介（可选）
-            "en": "Strategy & partnerships",
-            "zh-CN": "首席执行长",
+            "en": "Chief Executive Officer",
+            "zh-CN": "首席执行官",
             "zh-TW": "首席執行長"
         },
         "bio": {                                # 详情页正文简介（可选）
-            "en": "Alice leads strategy and partnerships. Previously at ...",
-            "zh-CN": "负责战略与合作，曾就职于……",
-            "zh-TW": """王宇琪先生在財富管理方面擁有超過20年的經驗。 
-創立量子基石前, 他曾擔任華瑞的董事顧問和高級合夥人, 並負責香港分公司的業務。
- 
- 
-憑藉超過20年的銀行業經驗，他為該職位帶來了廣泛的知識和專業技能。王先生在金融和信託事務方面有著扎實的背景，使他成為一名值得信賴的顧問。
- 
-王先生於2002年在高盛開始了他的職業生涯，並憑藉他的工作熱情和奉獻精神迅速晉升。
- 
-他曾在Avanta Assets Investment Management Ltd.、中國國際金融股份有限公司、巴克萊財富管理/新加坡銀行和瑞士信貸擔任領導職務，
- 
-成功領導了管理數十億美元資產的團隊，展示了他提供卓越結果的能力。
- 
+            "en": """Mr. Wang Yuqi has over 20 years of experience in wealth management. Before founding Quantum Cornerstone, he served as a Board Advisor and Senior Partner at HuaRui, where he was responsible for the firm’s Hong Kong operations. With more than two decades in the banking industry, he brings extensive knowledge and expertise to this role. Mr. Wang has a solid background in finance and trust services, making him a trusted advisor.\n
+Mr. Wang began his career at Goldman Sachs in 2002, where his passion and dedication quickly led to his advancement. He has held leadership positions at Avanta Assets Investment Management Ltd., China International Capital Corporation (CICC), Barclays Wealth Management/Bank of Singapore, and Credit Suisse. He successfully led teams managing multi-billion-dollar assets, demonstrating his ability to deliver outstanding results.\n
+Mr. Wang holds a Bachelor’s degree in Engineering from Tsinghua University, an MBA from the University of Chicago, and is a Chartered Financial Analyst (CFA).""",
+
+            "zh-CN": """王宇琪先生在财富管理方面拥有超过20年的经验。创立量子基石之前，他曾担任华瑞的董事顾问和高级合伙人，并负责香港分公司的业务。凭借超过20年的银行业经验，他为该职位带来了广泛的知识和专业技能。王先生在金融和信托事务方面有着扎实的背景，使他成为一名值得信赖的顾问。\n
+王先生于2002年在高盛开始了他的职业生涯，并凭借他的工作热情和奉献精神迅速晋升。他曾在Avanta Assets Investment Management Ltd.、中国国际金融股份有限公司、巴克莱财富管理/新加坡银行和瑞士信贷担任领导职务，成功领导了管理数十亿美元资产的团队，展示了他提供卓越成果的能力。\n
+王宇琪先生拥有清华大学的工程学学士学位、芝加哥大学的工商管理硕士学位以及特许金融分析师（CFA）资格。""",
+
+            "zh-TW": """王宇琪先生在財富管理方面擁有超過20年的經驗。 創立量子基石前, 他曾擔任華瑞的董事顧問和高級合夥人, 並負責香港分公司的業務。憑藉超過20年的銀行業經驗，他為該職位帶來了廣泛的知識和專業技能。王先生在金融和信託事務方面有著扎實的背景，使他成為一名值得信賴的顧問。\n
+王先生於2002年在高盛開始了他的職業生涯，並憑藉他的工作熱情和奉獻精神迅速晉升。他曾在Avanta Assets Investment Management Ltd.、中國國際金融股份有限公司、巴克萊財富管理/新加坡銀行和瑞士信貸擔任領導職務，成功領導了管理數十億美元資產的團隊，展示了他提供卓越結果的能力。\n
 王宇琪先生擁有清華大學的工程學學士學位、芝加哥大學的工商管理碩士學位以及特許金融分析師（CFA）資格。"""
         }
     },
-    {
-        "slug": "bob-lee",
-        "name": "Bob Lee",
-        "title": "Engineering Lead",
-        "photo": "img/people/bob.jpeg",
-        "summary": {
-            "en": "Engineering & platform",
-            "zh-CN": "工程与平台",
-            "zh-TW": "工程與平台"
-        },
-        "bio": {
-            "en": "Bob builds reliable systems and teams...",
-            "zh-CN": "负责工程与平台可靠性……",
-            "zh-TW": "負責工程與平台可靠性……"
-        }
-    },
+    # {
+    #     "slug": "bob-lee",
+    #     "name": "Bob Lee",
+    #     "title": "Engineering Lead",
+    #     "photo": "img/people/bob.jpeg",
+    #     "summary": {
+    #         "en": "Engineering & platform",
+    #         "zh-CN": "工程与平台",
+    #         "zh-TW": "工程與平台"
+    #     },
+    #     "bio": {
+    #         "en": "Bob builds reliable systems and teams...",
+    #         "zh-CN": "负责工程与平台可靠性……",
+    #         "zh-TW": "負責工程與平台可靠性……"
+    #     }
+    # },
     # …继续按这个格式添加更多成员
 ]
 

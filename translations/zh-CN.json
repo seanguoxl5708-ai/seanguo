@@ -1,6 +1,6 @@
 {
   "brand": {
-    "name": "CompanyName",
+    "name": "量子基石",
     "tagline": "这里是公司的一句话简介（占位）。"
   },
   "nav": {
@@ -20,8 +20,8 @@
   },
   "home": {
     "hero_title": "我们致力于为客户提供卓越的服务，助力他们在竞争中脱颖而出。",
-    "hero_lead": "胜利属于最坚韧者。",
-    "cta_services": "了解服务",
+    "hero_lead": "公司标语。",
+    "cta_services": "了解更多",
     "cta_contact": "联系我们",
     "adv": "我们的优势",
     "prod_core": "核心产品",

@@ -8,9 +8,14 @@
     {% for p in people %}
       <article class="card person">
         <img class="avatar" src="{{ url_for('static', filename=p.photo) }}" alt="{{ p.name }}">
-        <h3 class="name">{{ p.name }}</h3>
-        <div class="title">{{ p.title }}</div>
-
+        <h3 class="name">
+          {{ p.name[cur] if p.name and p.name.get(cur) else (p.name['en'] if p.name and p.name.get('en') else '') }}
+        </h3>
+        <div class="title">
+          {{ p.title[cur] if p.title and p.title.get(cur) else (p.title['en'] if p.title and p.title.get('en') else '') }}
+        </div>
+        
+        
         {% set sum = (p.summary[cur] if p.summary and p.summary.get(cur) else (p.summary['en'] if p.summary and p.summary.get('en') else '')) %}
         {% if sum %}<p class="muted">{{ sum }}</p>{% endif %}
 
@@ -21,7 +26,7 @@
 
   <style>
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
-    .person .avatar{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;margin-bottom:10px}
+    .person .avatar{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;margin-bottom:10px;object-position: center 20%; }
     .person .name{margin:6px 0 2px}
     .person .title{color:#9aa0aa;font-size:14px;margin-bottom:6px}
     @media (max-width: 900px){ .grid-3{grid-template-columns:1fr} }

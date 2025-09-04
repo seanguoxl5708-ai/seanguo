@@ -1,20 +1,44 @@
-:root{
+/* :root{
   --bg:#0f1115; --text:#e6e6e9; --muted:#9aa0aa; --card:#151823; --line:#23283b;
   --brand:#4f46e5; 
+} */
+:root{
+  --bg:#ffffff;       /* 页面背景 → 白色 */
+  --text:#111111;     /* 主要文字 → 深黑 */
+  --muted:#555555;    /* 次级文字 → 中灰 */
+  --card:#ffffff;     /* 卡片底色 → 浅灰 */
+  --line:#dddddd;     /* 分隔线 → 浅灰线条 */
+  --brand:#b8b8c5;    /* 品牌色保持不变 */
 }
+
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
-.site-header{position:sticky;top:0;background:rgba(15,17,21,.6);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line);z-index:10}
+.site-header{position:sticky;top:0;background:#000000; ;backdrop-filter:none;border-bottom:1px solid #000;z-index:10;margin-bottom: 0;padding-bottom: 0;}
 .header-inner{display:flex;align-items:center;gap:18px;min-height:64px}
 .brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:800}
-.logo{width:28px;height:28px;border-radius:6px;background:var(--brand)}
-.nav{margin-left:auto;display:flex;align-items:center;gap:14px}
+.logo{width:40px;height:40px;border-radius:6px;background:var(--brand)}
+.nav{margin-left:auto;display:flex;align-items:center;gap:14px;color: #fff;}
 .nav-link{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:8px}
 .nav-link.active,.nav-link:hover{background:rgba(255,255,255,.06)}
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:10px;background:var(--brand);color:#fff;text-decoration:none;border:0}
 .btn.btn-secondary{background:transparent;border:1px solid var(--line);color:var(--text)}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: transparent;           /* 透明背景 */
+  color: #100000;                       /* 白色文字 */
+  border: 1px solid #0a0000;            /* 白色虚线边框 */
+  text-decoration: none;
+  border-style: dashed;              /* 虚线 */
+}
+.btn:hover {
+  background: rgba(255, 255, 255, 0.1);  /* 悬停时轻微背景色变化 */
+}
 .page{padding:32px 0 72px}
 .hero{padding:48px 0;border-bottom:1px solid var(--line)}
 .lead{color:var(--muted);max-width:720px}
@@ -27,13 +51,80 @@ body{background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,
 .site-footer{border-top:1px solid var(--line);padding:24px 0;background:#0d0f13}
 .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px}
 .footer-bottom{border-top:1px dashed var(--line);margin-top:10px;padding-top:10px}
+.site-header .brand {
+  color: #fff !important;
+}
+/* 头部是深色背景时，让导航文字都为白色 */
+.site-header .nav .nav-link,
+.site-header .nav .dropdown-item {
+  color: #fff;
+}
+
+/* 悬停/当前页也保持白，并给一点浅浅的悬停底色 */
+.site-header .nav .nav-link:hover,
+.site-header .nav .nav-link.active {
+  color: #fff;
+  background: rgba(255,255,255,.12);
+}
+
+/* 头部导航里的下拉菜单，保持黑底白字 */
+.site-header .dropdown-menu{
+  background: #000;              /* 黑底 */
+  border: 1px solid rgba(255,255,255,0.2);  /* 浅浅的白色边框 */
+}
+
+.site-header .dropdown-item {
+  color: #fff;                   /* 白字 */
+}
+
+.site-header .dropdown-item:hover {
+  background: rgba(255,255,255,0.1); /* hover 时灰白高亮 */
+}
+/* 语言下拉菜单：黑底白字 */
+.lang-switch .lang-menu {
+  background: #000;                /* 黑底 */
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  padding: 6px 0;
+  min-width: 160px;
+  display: none;                   /* 默认隐藏，由 JS 控制显示 */
+  position: absolute;              /* 确保悬浮在按钮下方 */
+  z-index: 50;
+}
+
+/* 菜单项：白字 */
+.lang-switch .lang-menu a {
+  display: block;
+  padding: 8px 12px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* hover 效果：浅白高亮 */
+.lang-switch .lang-menu a:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* 语言按钮本身：白字 + 去掉亮色覆盖 */
+.lang-switch .lang-btn {
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
 @media (max-width: 900px){ .grid-2,.grid-3{grid-template-columns:1fr} }
 /* 首页翻页式布局 */
 html { scroll-behavior: smooth; }
 
 .section-hero {
   position: relative;
-  height: 88vh;  /* 确保背景图片填满整个屏幕 */
+  height: 70vh;  /* 92.5确保背景图片填满整个屏幕 */
   display: grid;
   place-items: center;
   background: #000;
@@ -43,6 +134,7 @@ html { scroll-behavior: smooth; }
   background-repeat: no-repeat;
   margin-left: 0;
   margin-right: 0;
+  margin-top: -32px;   /* 确保紧贴导航 */
 }
 .section-hero .hero-overlay{
   position:absolute; inset:0;
@@ -66,22 +158,26 @@ html { scroll-behavior: smooth; }
 }
 
 .hero-title {
-  font-size: clamp(28px, 5vw, 56px);
+  font-size: clamp(18px, 5vw, 32px);
   font-weight: 800;
   letter-spacing: -0.3px;
   text-align: left;  /* 调整标题文字对齐方式为左对齐 */
   padding-left: 20px; /* 给标题加点左边距 */
   font-family: 'Microsoft YaHei', Arial, sans-serif;  /* 设置等线字体 */
-  max-width: 600px; /* 控制标题最大宽度 */
+  max-width: 800px; /* 控制标题最大宽度 */
+  color: #ffffff; /* 白色文字 */
+  transform: translateY(-20%);
 }
 
 .hero-lead {
   color: var(--muted);
   max-width: 760px;
-  margin: 10px auto 0;
+  /* margin: 10px auto 0; */
   text-align: left;  /* 调整副标题文字对齐方式为左对齐 */
   padding-left: 20px; /* 给副标题加点左边距 */
   font-family: 'Microsoft YaHei', Arial, sans-serif;  /* 设置等线字体 */
+  color: #ffffff; /* 白色文字 */
+  transform: translateY(-50%);
 }
 .hero-cta{ display:flex; gap:12px; justify-content:center; margin-top:18px; flex-wrap:wrap; }
 .hero-cta .btn {
@@ -107,7 +203,30 @@ html { scroll-behavior: smooth; }
 
 /* 通用分段 */
 .section{ padding: 56px 0; border-bottom: 1px solid var(--line); }
-.section-dark{ background: #0b0d12; }
+.section-dark{ background: #020006; }
+/* 成就区文字全白 */
+.section-dark,
+.section-dark h2,
+.section-dark .metric-value,
+.section-dark .metric-label {
+  color: #fff;
+}
+/* 底部 footer 全部白字 */
+.site-footer,
+.site-footer h4,
+.site-footer h5,
+.site-footer p,
+.site-footer li,
+.site-footer a,
+.site-footer small {
+  color: #fff;
+}
+
+/* 链接 hover 时高亮一点 */
+.site-footer a:hover {
+  color: #ddd;   /* 或者用 var(--brand) 品牌色 */
+}
+
 
 /* 网格与卡片（沿用你原有的命名） */
 .cards-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
@@ -116,7 +235,34 @@ html { scroll-behavior: smooth; }
 .more:hover{ text-decoration: underline; }
 
 /* 成就数字 */
-.metrics{ display:grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top:14px; }
+/* .metrics{ display:grid; grid-template-columns:1fr ; gap: 18px; margin-top:14px; } */
+/* 成就区：改造成大数字 + 居中展示，每条占满整行 */
+#achievements .metrics {
+  display: flex !important;
+  flex-direction: column !important;  /* 垂直排列 */
+  gap: 40px !important;               /* 每条之间留大间距 */
+  align-items: center;                 /* 居中 */
+  margin-top: 40px;
+}
+
+#achievements .metric {
+  width: 100%;
+  text-align: center;                  /* 数字和标签都居中 */
+}
+
+#achievements .metric-value {
+  font-size: clamp(48px, 10vw, 96px);  /* 超大字号，自适应屏幕 */
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;                         /* 白字（和 section-dark 匹配） */
+}
+
+#achievements .metric-label {
+  margin-top: 12px;
+  font-size: 20px;
+  color: #ddd;                         /* 浅灰，弱化对比 */
+}
+
 .metric{ background: var(--card); border:1px solid var(--line); border-radius:14px; padding: 20px; text-align:center; }
 .metric-value{ font-size: clamp(28px, 6vw, 48px); font-weight: 800; }
 .metric-label{ color: var(--muted); margin-top: 6px; }
