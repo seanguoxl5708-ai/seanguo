@@ -1,0 +1,153 @@
+{
+  "brand": {
+    "name": "量子基石",
+    "tagline": "这里是公司的一句话简介（占位）。",
+    "suffix": "示例"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务",
+    "products": "产品",
+    "careers": "加入我们",
+    "contact": "联系",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "quick_links": "快速链接",
+    "language": "语言",
+    "lang_en": "English",
+    "lang_zh_cn": "简体中文",
+    "lang_zh_tw": "繁體中文"
+  },
+  "home": {
+    "hero_title": "我们致力于为客户提供卓越的服务，助力他们在竞争中脱颖而出。",
+    "hero_lead": "公司标语。",
+    "cta_services": "了解更多",
+    "cta_contact": "联系我们",
+    "adv": "我们的优势",
+    "prod_core": "核心产品",
+    "clients": "客户与案例",
+    "clients_points": [
+      "跨境资产配置 / 家族办公室解决方案",
+      "机构顾问 / 定制化组合",
+      "科技赋能研究与风险管理"
+    ],
+    "clients.cross_border": "跨境家办与财富传承：",
+    "clients.cross_border_desc": "立足香港这一国际金融枢纽，我们以前瞻性的全球视野，为超高净值家族量身定制离岸资产配置方案，助力财富在跨越世代与周期的更迭中稳健传承。",
+    "clients.advisory": "机构投顾与定制化组合：",
+    "clients.advisory_desc": "摒弃产品驱动的传统模式，我们始终坚守绝对中立的买方立场。深度洞察机构客户的底层诉求，为您构建高度个性化、适配复杂市场环境的专属投资组合。",
+    "clients.tech": "科技赋能与严谨风控：",
+    "clients.tech_desc": "我们将前沿金融科技深度融入投研体系。通过数据驱动的宏观洞察与系统化的风控模型，精准捕捉阿尔法收益，为您的每一笔托付提供坚实的护城河。",
+    "achievements": "我们的成就",
+    "latest_news": "最新动态",
+    "more": "全部新闻 →",
+    "read_more": "阅读更多",
+    "back_to_news": "返回新闻列表",
+    "achievement_cards": {
+      "clients": {
+        "title": "可信赖受托人",
+        "description": "作为独立买方倡导者，我们为一小部分高净值客户提供高度定制的财富管理解决方案。量子基石以质为先，拒绝规模扩张，确保为核心客户提供卓越的专属服务与充足的能量。通过定制的全球资产配置和先进的财富结构设计，我们作为可信赖的受托伙伴，守护长期资本增值与顺畅代际传承。"
+      },
+      "aum": {
+        "title": "10亿+ 资产规模",
+        "description": "我们目前管理的资产规模超过10亿美元，涵盖全权委托和顾问服务。借助稳健的外部资产管理人（EAM）框架，我们已与一线全球私人银行和主经纪商建立了深厚合作关系。该基础设施不仅确保客户资产在最严格的全球托管与隔离标准下安全存放，还使我们能够以机构级精度执行跨境、多资产配置策略。"
+      },
+      "years": {
+        "title": "Tier-1 传承",
+        "description": "我们的竞争优势源于协同结构：资深战略领导力与精英执行力的融合。由创始人——拥有数十年顶级全球银行核心领导经验的行业资深人士带领，我们已将严谨的机构级风险管理机制深植公司基因。配合拥有丰富一线投行经验的核心团队成员，一同构建起强大的智识护城河，提供出众的基本面资产筛选、复杂衍生品定价和最优交易执行能力。"
+      }
+    }
+  },
+  "about": {
+    "title": "关于我们",
+    "muted": "Quantum Jade Investment Limited是一家总部位于香港的外部资产管理公司（EAM），持有香港证监会第1类、第4类和第9类牌照（CE编号：BVU457）。截至2026年2月10日，该团队管理约10亿美元资产。我们根据客户需求和讨论收取管理费和绩效费。这些费用通常以超过美国无风险利率的费率或高水位线机制结构化。该团队目前由王宇琪先生领导，他拥有超过20年的银行经验，团队由约10名员工组成。",
+    "mission": "使命与愿景",
+    "timeline": "里程碑",
+    "business_model": {
+      "title": "商业模式",
+      "description": "客户在独立托管银行开设账户。EAM签署有限授权书（LPOA）来管理资产，但不能提取资金。托管银行根据客户的授权，按照EAM的指示执行交易。我们的银行合作伙伴示例：星展银行、中信建投国际、朱利叶斯·贝尔银行、Leonteq、VP银行、LGT银行。我们比较私人银行定价，并为客户提供最合适和公正的选择，完全独立于任何银行产品推销激励。"
+    },
+    "diagram": {
+      "title": "商业模式图表",
+      "entities": "主体：CLIENT, PRIVATE BANK, EAM, BUSINESS MODEL",
+      "client_private_bank": "Client 与 Private Bank 之间：Bank Account Opening-Agreement",
+      "client_eam": "Client 与 EAM 之间：Asset Management Agreement, Limited Power of Attorney",
+      "private_bank_eam": "Private Bank 与 EAM 之间：Profit Sharing Agreement on Commissions, Co-operation Agreement"
+    },
+    "disclaimer": "2026 Quantum Jade Investment Limited。版权所有。上述摘要可能会发生变化，且不构成投资、法律、税务或其他建议。您必须对本演示中的信息保密，未经Quantum Jade事先书面许可，不得复制或分享任何信息。",
+    "view_details": "查看详情"
+  },
+  "services": {
+    "title": "服务",
+    "muted": "服务分类与说明（占位）。",
+    "a": "咨询顾问",
+    "b": "技术实施",
+    "c": "运维支持",
+    "consulting_intro": "作为立足香港的独立外部资产管理者（EAM），量子基石投资（Quantum Jade Investment Limited）致力于为您提供客观、专业的投资咨询顾问服务。面对复杂多变的全球资本市场，我们不依附于单一金融机构，而是站在您的利益至上，依托严谨的研究逻辑与深度的行业洞察，为您提供量身定制的财富管理框架与战略指引，助您在瞬息万变的市场中穿越周期、稳健前行。",
+    "consulting_desc": "资产配置、投策设计、专项研究。",
+    "consulting": {
+      "provides": "我们提供",
+      "item1": "资产配置框架设计",
+      "item2": "专题研究与尽调",
+      "item3": "投策审阅与复盘",
+      "value": "价值体现",
+      "value_desc": "以可度量、可执行的建议，帮助客户高效决策。"
+    },
+    "implementation_desc": "组合构建、交易执行、风控监测。",
+    "implementation": {
+      "scope": "实施范围",
+      "item1": "组合构建与再平衡",
+      "item2": "交易通道与执行",
+      "item3": "风控规则与监测",
+      "delivery": "客户对接机制",
+      "delivery_desc": "涵盖项目制与常年委托服务架构。针对不同客户的定制化业务诉求，建立点对点的沟通与反馈流程。通过细致的日常追踪与严谨的执行标准，确保对各类常规及突发需求实现精准响应与准确落地。"
+    },
+    "operations_intro": "我们的中后台运营体系致力于为复杂的跨市场投资提供稳健的基础设施支持。通过标准化的流程管理与多维度的校验机制，我们对资产的交易后生命周期进行持续追踪。团队将执行细节与客户的实际业务场景深度对齐，确保各项指令在合规框架内得到准确落实、妥善记录与高透明度呈现。",
+    "operations_daily_title": "核心运营事项 (Daily operations)",
+    "operations": {
+      "daily": {
+        "item1": "报告与信息披露 (Reporting & disclosure): 建立常态化沟通机制，根据客户业务周期提供清晰、详实的资产状态跟踪与组合核算报告。",
+        "item2": "稽核与合规协同 (Compliance & audit coordination): 协助对接内外部审计与合规审查，提供完整的交易节点记录、凭证支持与数据交叉比对服务。",
+        "item3": "清算与数据复核 (Clearing & reconciliation): 实行标准化的交易后复核机制，确保资金流转、资产确权及收益分配记录的完整性与可追溯性。"
+      },
+      "response_title": "客户响应机制 (Client response mechanism)",
+      "response_desc": "设立专职的客户支持团队，对常规查询与定制化运营需求实行全流程跟进。我们依托规范的反馈机制，确保客户的各项诉求得到及时评估与务实处理。在恪守合规底线的前提下，团队以专业且注重细节的执行标准，协助客户解决各类实操层面的运营摩擦，保障业务流程的顺畅运转。"
+    },
+    "operations_desc": "报告与披露、合规对接、数据服务。"
+  },
+  "products": {
+    "title": "产品",
+    "muted": "产品卡片/功能列表/价格方案（占位）。",
+    "a": "产品A",
+    "b": "产品B",
+    "c": "产品C"
+  },
+  "careers": {
+    "title": "加入我们",
+    "muted": "企业文化、岗位列表、招聘流程（占位）。",
+    "why": "为什么加入",
+    "openings": "开放岗位"
+  },
+  "contact": {
+    "title": "联系",
+    "muted": "如需合作或了解更多，请填写以下信息（占位）。",
+    "name": "您的称呼",
+    "email": "邮箱",
+    "message": "留言",
+    "submit": "提交",
+    "note": "* 当前为演示站点，不会发送外部邮件。",
+    "address": "香港中環上環翼洛街93-103號尚裕商業中心1105室"
+  },
+  "legal": {
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "rights": "保留所有权利。"
+  },
+  "notfound": {
+    "title": "页面未找到"
+  },
+  "person": {
+    "no_bio": "暂无详细介绍。",
+    "back_to_about": "← 返回关于我们"
+  }
+}

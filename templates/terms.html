@@ -1,1 +1,57 @@
-{% extends 'base.html' %}{% block content %}<h1>{{ t('nav.terms') }}</h1><p class='muted'>...</p>{% endblock %}
+{% extends 'base.html' %}
+{% block content %}
+<div class="privacy-policy-container">
+  <h1>{{ t('terms_policy.title') }}</h1>
+
+  <section class="policy-section">
+    <h2>{{ t('terms_policy.section1_title') }}</h2>
+    <p>{{ t('terms_policy.section1_text') }}</p>
+  </section>
+
+  <section class="policy-section">
+    <h2>{{ t('terms_policy.section2_title') }}</h2>
+    <p>{{ t('terms_policy.section2_text') }}</p>
+    <p>{{ t('terms_policy.section2_advice') }}</p>
+  </section>
+
+  <section class="policy-section">
+    <h2>{{ t('terms_policy.section3_title') }}</h2>
+    <p>{{ t('terms_policy.section3_text') }}</p>
+  </section>
+
+  <section class="policy-section">
+    <h2>{{ t('terms_policy.section4_title') }}</h2>
+    <p>{{ t('terms_policy.section4_text') }}</p>
+  </section>
+
+  <section class="policy-section">
+    <h2>{{ t('terms_policy.section5_title') }}</h2>
+    <p>{{ t('terms_policy.section5_text') }}</p>
+  </section>
+</div>
+
+<style>
+.privacy-policy-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.policy-section {
+  margin-bottom: 2rem;
+}
+
+.policy-section h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.policy-section p {
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 1rem;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ t('home.latest_news', '最新动态') }}</h1>
+  
+  {% if posts and posts|length > 0 %}
+    <div class="news-list">
+      {% for p in posts %}
+      <article class="news-item">
+        <h3 class="news-title">
+          <a href="{{ url_for('news_detail', slug=p.slug) }}">{{ p.title }}</a>
+        </h3>
+        {% if p.date %}
+          <div class="news-date">{{ p.date.strftime('%Y-%m-%d') }}</div>
+        {% endif %}
+        {% if p.summary %}
+          <p class="news-summary">{{ p.summary }}</p>
+        {% endif %}
+        <a class="btn btn-sm" href="{{ url_for('news_detail', slug=p.slug) }}">{{ t('home.read_more', '阅读更多') }}</a>
+      </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">{{ t('home.no_news', '暂无新闻') }}</p>
+  {% endif %}
+
+  <style>
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .news-item {
+      border-left: 4px solid var(--primary, #007bff);
+      padding: 1.5rem;
+      background: rgba(0,0,0,0.02);
+      border-radius: 4px;
+    }
+    .news-title {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .news-title a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .news-title a:hover {
+      color: var(--primary, #007bff);
+    }
+    .news-date {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+    .news-summary {
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+{% endblock %}

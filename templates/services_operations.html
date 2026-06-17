@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
   <h1>{{ t('services.c', '运维支持') }}</h1>
-  <p class="muted">这里是运维支持服务的介绍段落（占位）。可放日常报告、合规配合、数据保障等。</p>
+  <p class="muted">{{ t('services.operations_intro', '我们的中后台运营体系致力于为复杂的跨市场投资提供稳健的基础设施支持。通过标准化的流程管理与多维度的校验机制，我们对资产的交易后生命周期进行持续追踪。团队将执行细节与客户的实际业务场景深度对齐，确保各项指令在合规框架内得到准确落实、妥善记录与高透明度呈现。') }}</p>
   <section class="grid-2">
     <div class="card">
-      <h3>日常工作</h3>
+      <h3>{{ t('services.operations.daily_title', '核心运营事项 (Daily operations)') }}</h3>
       <ul class="bullets">
-        <li>定期/按需报告与披露</li>
-        <li>合规稽核对接</li>
-        <li>数据校验与留痕</li>
+        <li>{{ t('services.operations.daily.item1', '报告与信息披露 (Reporting & disclosure): 建立常态化沟通机制，根据客户业务周期提供清晰、详实的资产状态跟踪与组合核算报告。') }}</li>
+        <li>{{ t('services.operations.daily.item2', '稽核与合规协同 (Compliance & audit coordination): 协助对接内外部审计与合规审查，提供完整的交易节点记录、凭证支持与数据交叉比对服务。') }}</li>
+        <li>{{ t('services.operations.daily.item3', '清算与数据复核 (Clearing & reconciliation): 实行标准化的交易后复核机制，确保资金流转、资产确权及收益分配记录的完整性与可追溯性。') }}</li>
       </ul>
     </div>
     <div class="card">
-      <h3>服务保障</h3>
-      <p>明确 SLA、支持热线/工单、紧急响应机制。</p>
+      <h3>{{ t('services.operations.response_title', '客户响应机制 (Client response mechanism)') }}</h3>
+      <p>{{ t('services.operations.response_desc', '设立专职的客户支持团队，对常规查询与定制化运营需求实行全流程跟进。我们依托规范的反馈机制，确保客户的各项诉求得到及时评估与务实处理。在恪守合规底线的前提下，团队以专业且注重细节的执行标准，协助客户解决各类实操层面的运营摩擦，保障业务流程的顺畅运转。') }}</p>
     </div>
   </section>
 {% endblock %}

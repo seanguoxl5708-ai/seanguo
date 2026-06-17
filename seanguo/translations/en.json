@@ -1,0 +1,153 @@
+{
+  "brand": {
+    "name": "Quantum Foundation",
+    "tagline": "One-line company blurb (placeholder).",
+    "suffix": "Example"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "products": "Products",
+    "careers": "Careers",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "quick_links": "Quick links",
+    "language": "Language",
+    "lang_en": "English",
+    "lang_zh_cn": "简体中文",
+    "lang_zh_tw": "繁體中文"
+  },
+  "home": {
+    "hero_title": "We are committed to providing our clients with exceptional service, empowering them to stand out in the competition.",
+    "hero_lead": "Company tagline.",
+    "cta_services": "Learn more",
+    "cta_contact": "Contact us",
+    "adv": "Our strengths",
+    "prod_core": "Core products",
+    "clients": "Clients & case studies",
+    "clients_points": [
+      "Cross-border asset allocation / Family office solutions",
+      "Institutional advisory / Customized portfolios",
+      "Tech-enabled research & risk management"
+    ],
+    "clients.cross_border": "Cross-border family office & wealth transfer: ",
+    "clients.cross_border_desc": "Based in Hong Kong, this international financial hub, we provide customized offshore asset allocation solutions for ultra-high-net-worth families with a forward-looking global perspective, helping wealth to be steadily passed on across generations and cycles.",
+    "clients.advisory": "Institutional advisory & customized portfolios: ",
+    "clients.advisory_desc": "Rejecting product-driven traditional models, we always adhere to an absolutely neutral buy-side position. We deeply understand the underlying needs of institutional clients and build highly personalized investment portfolios that adapt to complex market environments for you.",
+    "clients.tech": "Tech-enabled & rigorous risk management: ",
+    "clients.tech_desc": "We deeply integrate cutting-edge financial technology into our research system. Through data-driven macroeconomic insights and systematic risk control models, we accurately capture alpha returns and provide a solid moat for every commitment you make.",
+    "achievements": "Our achievements",
+    "latest_news": "Latest news",
+    "more": "All news →",
+    "read_more": "Read more",
+    "back_to_news": "Back to news list",
+    "achievement_cards": {
+      "clients": {
+        "title": "Trusted Fiduciary",
+        "description": "Acting as an independent, buy-side advocate, we deliver highly bespoke wealth management solutions to a select group of high-net-worth individuals. At Quantum Jade, we prioritize qualitative depth over mass expansion, ensuring an exceptional level of dedicated service and bandwidth for our core clients. Through tailored global asset allocation and sophisticated wealth structuring, we serve as a trusted fiduciary partner, safeguarding long-term capital appreciation and seamless intergenerational wealth transfer."
+      },
+      "aum": {
+        "title": "$1B+ AUM",
+        "description": "We currently oversee in excess of USD 1 billion in assets across discretionary mandates and advisory services. Leveraging a robust External Asset Manager (EAM) framework, we have established deep, foundational partnerships with Tier-1 global private banks and prime brokers. This infrastructure not only ensures that client assets are secured under the strictest global custody and segregation standards, but also empowers us to execute cross-border, multi-asset allocation strategies with institutional-grade precision."
+      },
+      "years": {
+        "title": "Tier-1 Heritage",
+        "description": "Our competitive edge is anchored in a synergistic structure: seasoned strategic leadership combined with elite execution. Led by our founder—an industry veteran with decades of core leadership experience at top-tier global banks—we have ingrained rigorous, institutional-grade risk management protocols into our corporate DNA. Complementing this vision, our core team comprises professionals with extensive frontline investment banking experience. Together, they form a formidable intellectual moat, delivering unmatched proficiency in fundamental asset screening, complex derivatives pricing, and optimal trade execution."
+      }
+    }
+  },
+  "about": {
+    "title": "About us",
+    "muted": "Quantum Jade Investment Limited is an external asset manager (EAM) based in Hong Kong and holds Hong Kong SFC Type 1, Type 4, and Type 9 licenses (CE No. BVU457). As of 10 February 2026, the team advises approximately US$1 billion of assets. We charge management fees and performance fees, depending on client needs and discussions. These fees are typically structured at a rate in excess of the U.S. risk-free rate or under a high-water mark mechanism. The team is currently led by Mr. Wang Yuqi, who has over 20 years of banking experience, and consists of around 10 employees.",
+    "mission": "Mission & vision",
+    "timeline": "Milestones",
+    "business_model": {
+      "title": "Business Model",
+      "description": "Clients open accounts at independent custodian banks. The EAM signs a Limited Power of Attorney (LPOA) to manage the assets but cannot withdraw funds. The custodian bank executes transactions based on the EAM's instructions under the client's authorization. Examples of our banking partners: DBS Bank, CITIC CLSA, Julius Baer Bank, Leonteq, VP Bank, LGT Bank. We compare private bank pricing and provide clients with the most suitable and unbiased options, fully independent of any banking product-pushing incentives."
+    },
+    "diagram": {
+      "title": "Business Model Diagram",
+      "entities": "Entities: CLIENT, PRIVATE BANK, EAM, BUSINESS MODEL",
+      "client_private_bank": "Client & Private Bank: Bank Account Opening-Agreement",
+      "client_eam": "Client & EAM: Asset Management Agreement, Limited Power of Attorney",
+      "private_bank_eam": "Private Bank & EAM: Profit Sharing Agreement on Commissions, Co-operation Agreement"
+    },
+    "disclaimer": "2026 Quantum Jade Investment Limited. All rights reserved. This above summary is subject to change and is not an investment, legal, tax or other advice. You must keep the information in this presentation confidential and may not reproduce or share any of the information without Quantum Jade's prior written permission.",
+    "view_details": "View Details"
+  },
+  "services": {
+    "title": "Services",
+    "muted": "Service categories and descriptions (placeholder).",
+    "a": "Advisory",
+    "b": "Implementation",
+    "c": "Operations",
+    "consulting_intro": "As an independent external asset manager (EAM) based in Hong Kong, Quantum Jade Investment Limited is committed to providing objective and professional investment advisory services. Navigating the complex and ever-changing global capital markets, we operate independently from any single financial institution, placing your interests above all. Leveraging rigorous research logic and deep industry insights, we provide you with bespoke wealth management frameworks and strategic guidance to help you navigate market cycles and advance steadily through an ever-changing environment.",
+    "consulting_desc": "Asset allocation, investment strategy design, specialized research.",
+    "consulting": {
+      "provides": "What we provide",
+      "item1": "Asset allocation framework design",
+      "item2": "Specialized research and due diligence",
+      "item3": "Investment strategy review and debrief",
+      "value": "Value realization",
+      "value_desc": "Provide measurable and executable recommendations to help clients make efficient decisions."
+    },
+    "implementation_desc": "Portfolio construction, trade execution, risk monitoring.",
+    "implementation": {
+      "scope": "Implementation scope",
+      "item1": "Portfolio construction and rebalancing",
+      "item2": "Trading channels and execution",
+      "item3": "Risk control rules and monitoring",
+      "delivery": "Customer engagement model",
+      "delivery_desc": "Covers both project-based and retainer service models. We establish point-to-point communication and feedback workflows to meet each client’s customized business needs. Through meticulous daily tracking and rigorous execution standards, we ensure precise responsiveness and reliable delivery for both routine and unexpected requests."
+    },
+    "operations_intro": "Our operations backbone is designed to provide robust infrastructure support for complex cross-market investments. Through standardized process management and multi-dimensional validation mechanisms, we continuously track the post-trade lifecycle of assets. The team aligns execution details closely with clients' operational scenarios to ensure instructions are executed accurately, properly recorded, and presented with high transparency within a compliant framework.",
+    "operations_daily_title": "Daily operations",
+    "operations": {
+      "daily": {
+        "item1": "Reporting & disclosure: Establish regular communication rhythms and deliver clear, detailed asset status tracking and portfolio accounting reports according to client reporting cycles.",
+        "item2": "Compliance & audit coordination: Support internal and external audit and compliance reviews with full transaction trail records, document support, and cross-data reconciliation.",
+        "item3": "Clearing & reconciliation: Apply standardized post-trade reconciliation procedures to ensure integrity and traceability of cash flows, asset confirmation and distribution records."
+      },
+      "response_title": "Client response mechanism",
+      "response_desc": "We maintain a dedicated client support team for end-to-end follow-up on routine queries and bespoke operational requests. Leveraging formal feedback workflows, we ensure timely assessment and pragmatic handling of client needs. While upholding compliance standards, the team applies meticulous execution controls to resolve operational frictions and ensure smooth business operations."
+    },
+    "operations_desc": "Reporting and disclosure, compliance integration, data services."
+  },
+  "products": {
+    "title": "Products",
+    "muted": "Product cards / feature lists / pricing (placeholder).",
+    "a": "Product A",
+    "b": "Product B",
+    "c": "Product C"
+  },
+  "careers": {
+    "title": "Careers",
+    "muted": "Culture, openings, hiring process (placeholder).",
+    "why": "Why join us",
+    "openings": "Open roles"
+  },
+  "contact": {
+    "title": "Contact",
+    "muted": "For inquiries, please fill the form (placeholder).",
+    "name": "Your name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send",
+    "note": "* Demo only — no external emails are sent.",
+    "address": "Room 1105，OfficePlus@Hip Shing Hong Sheung Wan Centre, 93-103 Wing Lok Street, Sheung Wan, Hong Kong"
+  },
+  "legal": {
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "rights": "All rights reserved."
+  },
+  "notfound": {
+    "title": "Page not found"
+  },
+  "person": {
+    "no_bio": "No detailed introduction available.",
+    "back_to_about": "← Back to About Us"
+  }
+}

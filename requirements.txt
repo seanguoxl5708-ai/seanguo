@@ -1,3 +1,3 @@
 Flask>=2.2,<4
 gunicorn>=21
-frontmatter
+python-frontmatter>=1.0

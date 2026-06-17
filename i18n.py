@@ -4,10 +4,12 @@ from flask import g, request
 SUPPORTED = ["zh-CN", "en", "zh-TW"]
 DEFAULT = "zh-CN"
 _cache = {}
+DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
 def _load(lang):
     lang = lang if lang in SUPPORTED else DEFAULT
-    if lang in _cache:
+    # 在开发模式下禁用缓存，确保每次都读取最新文件
+    if not DEBUG and lang in _cache:
         return _cache[lang]
     base = os.path.join(os.path.dirname(__file__), "translations")
     path = os.path.join(base, f"{lang}.json")

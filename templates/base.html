@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ t('brand.name') }} - 示例</title>
+    <title>{{ t('brand.name') }} - {{ t('brand.suffix', '示例') }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/lang.css') }}">
   </head>
@@ -30,7 +30,7 @@
               <a class="dropdown-item" href="{{ url_for('services_operations') }}">{{ t('services.c') }}</a>
             </div>
           </div>
-          <a class="nav-link {% if request.path.startswith('/products') %}active{% endif %}" href="{{ url_for('products') }}">{{ t('nav.products') }}</a>
+          <a class="nav-link {% if request.path.startswith('/insight') %}active{% endif %}" href="{{ url_for('insight') }}">{{ t('nav.insight') }}</a>
           <a class="nav-link {% if request.path.startswith('/careers') %}active{% endif %}" href="{{ url_for('careers') }}">{{ t('nav.careers') }}</a>
           <a class="nav-link {% if request.path.startswith('/contact') %}active{% endif %}" href="{{ url_for('contact') }}">{{ t('nav.contact') }}</a>
           
@@ -80,14 +80,14 @@
         <div class="footer-col">
           <h5>{{ t('nav.contact') }}</h5>
           <ul>
-            <li>Email：contact@example.com</li>
-            <li>Tel：000-0000-0000</li>
-            <li>Address：Somewhere</li>
+            <li>Email：info@quantum-jade.com</li>
+            <li>Tel：+852 66052128</li>
+            <li>Address：{{ t('contact.address') }}</li>
           </ul>
         </div>
       </div>
       <div class="container footer-bottom">
-        <small>© {{ 2025 }} {{ t('brand.name') }}.</small>
+        <small>© {{ 2026 }} {{ t('brand.name') }}. {{ t('legal.rights') }}</small>
       </div>
     </footer>
     <script src="{{ url_for('static', filename='js/lang.js') }}"></script>

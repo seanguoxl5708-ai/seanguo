@@ -1,13 +1,15 @@
 {
   "brand": {
     "name": "Quantum Foundation",
-    "tagline": "One-line company blurb (placeholder)."
+    "tagline": "One-line company blurb (placeholder).",
+    "suffix": "Example"
   },
   "nav": {
     "home": "Home",
     "about": "About",
     "services": "Services",
     "products": "Products",
+    "insight": "Insight",
     "careers": "Careers",
     "contact": "Contact",
     "privacy": "Privacy",
@@ -31,24 +33,89 @@
       "Institutional advisory / Customized portfolios",
       "Tech-enabled research & risk management"
     ],
-    "intro_more": "Optionally a second paragraph: licenses, risk & compliance, coverage, team strengths.",
+    "clients.cross_border": "Cross-border family office & wealth transfer: ",
+    "clients.cross_border_desc": "Based in Hong Kong, this international financial hub, we provide customized offshore asset allocation solutions for ultra-high-net-worth families with a forward-looking global perspective, helping wealth to be steadily passed on across generations and cycles.",
+    "clients.advisory": "Institutional advisory & customized portfolios: ",
+    "clients.advisory_desc": "Rejecting product-driven traditional models, we always adhere to an absolutely neutral buy-side position. We deeply understand the underlying needs of institutional clients and build highly personalized investment portfolios that adapt to complex market environments for you.",
+    "clients.tech": "Tech-enabled & rigorous risk management: ",
+    "clients.tech_desc": "We deeply integrate cutting-edge financial technology into our research system. Through data-driven macroeconomic insights and systematic risk control models, we accurately capture alpha returns and provide a solid moat for every commitment you make.",
     "achievements": "Our achievements",
     "latest_news": "Latest news",
-    "more": "All news →"
-    
+    "more": "All news →",
+    "read_more": "Read more",
+    "back_to_news": "Back to news list",
+    "achievement_cards": {
+      "clients": {
+        "title": "Trusted Fiduciary",
+        "description": "Acting as an independent, buy-side advocate, we deliver highly bespoke wealth management solutions to a select group of high-net-worth individuals. At Quantum Jade, we prioritize qualitative depth over mass expansion, ensuring an exceptional level of dedicated service and bandwidth for our core clients. Through tailored global asset allocation and sophisticated wealth structuring, we serve as a trusted fiduciary partner, safeguarding long-term capital appreciation and seamless intergenerational wealth transfer."
+      },
+      "aum": {
+        "title": "$1B+ AUM",
+        "description": "We currently oversee in excess of USD 1 billion in assets across discretionary mandates and advisory services. Leveraging a robust External Asset Manager (EAM) framework, we have established deep, foundational partnerships with Tier-1 global private banks and prime brokers. This infrastructure not only ensures that client assets are secured under the strictest global custody and segregation standards, but also empowers us to execute cross-border, multi-asset allocation strategies with institutional-grade precision."
+      },
+      "years": {
+        "title": "Tier-1 Heritage",
+        "description": "Our competitive edge is anchored in a synergistic structure: seasoned strategic leadership combined with elite execution. Led by our founder—an industry veteran with decades of core leadership experience at top-tier global banks—we have ingrained rigorous, institutional-grade risk management protocols into our corporate DNA. Complementing this vision, our core team comprises professionals with extensive frontline investment banking experience. Together, they form a formidable intellectual moat, delivering unmatched proficiency in fundamental asset screening, complex derivatives pricing, and optimal trade execution."
+      }
+    }
   },
   "about": {
     "title": "About us",
-    "muted": "Company intro, mission/vision, history, team/org (placeholder).",
+    "muted": "Quantum Jade Investment Limited is an external asset manager (EAM) based in Hong Kong and holds Hong Kong SFC Type 1, Type 4, and Type 9 licenses (CE No. BVU457). As of 10 February 2026, the team advises approximately US$1 billion of assets. We charge management fees and performance fees, depending on client needs and discussions. These fees are typically structured at a rate in excess of the U.S. risk-free rate or under a high-water mark mechanism. The team is currently led by Mr. Wang Yuqi, who has over 20 years of banking experience, and consists of around 10 employees.",
     "mission": "Mission & vision",
-    "timeline": "Milestones"
+    "timeline": "Milestones",
+    "business_model": {
+      "title": "Business Model",
+      "description": "Clients open accounts at independent custodian banks. The EAM signs a Limited Power of Attorney (LPOA) to manage the assets but cannot withdraw funds. The custodian bank executes transactions based on the EAM's instructions under the client's authorization. Examples of our banking partners: DBS Bank, CITIC CLSA, Julius Baer Bank, Leonteq, VP Bank, LGT Bank. We compare private bank pricing and provide clients with the most suitable and unbiased options, fully independent of any banking product-pushing incentives."
+    },
+    "diagram": {
+      "title": "Business Model Diagram",
+      "entities": "Entities: CLIENT, PRIVATE BANK, EAM, BUSINESS MODEL",
+      "client_private_bank": "Client & Private Bank: Bank Account Opening-Agreement",
+      "client_eam": "Client & EAM: Asset Management Agreement, Limited Power of Attorney",
+      "private_bank_eam": "Private Bank & EAM: Profit Sharing Agreement on Commissions, Co-operation Agreement"
+    },
+    "disclaimer": "2026 Quantum Jade Investment Limited. All rights reserved. This above summary is subject to change and is not an investment, legal, tax or other advice. You must keep the information in this presentation confidential and may not reproduce or share any of the information without Quantum Jade's prior written permission.",
+    "view_details": "View Details"
   },
   "services": {
     "title": "Services",
     "muted": "Service categories and descriptions (placeholder).",
     "a": "Advisory",
     "b": "Implementation",
-    "c": "Operations support"
+    "c": "Operations",
+    "consulting_intro": "As an independent external asset manager (EAM) based in Hong Kong, Quantum Jade Investment Limited is committed to providing objective and professional investment advisory services. Navigating the complex and ever-changing global capital markets, we operate independently from any single financial institution, placing your interests above all. Leveraging rigorous research logic and deep industry insights, we provide you with bespoke wealth management frameworks and strategic guidance to help you navigate market cycles and advance steadily through an ever-changing environment.",
+    "consulting_desc": "Asset allocation, investment strategy design, specialized research.",
+    "consulting": {
+      "provides": "What we provide",
+      "item1": "Asset allocation framework design",
+      "item2": "Specialized research and due diligence",
+      "item3": "Investment strategy review and debrief",
+      "value": "Value realization",
+      "value_desc": "Provide measurable and executable recommendations to help clients make efficient decisions."
+    },
+    "implementation_desc": "Portfolio construction, trade execution, risk monitoring.",
+    "implementation_intro": "Leveraging the core team's 30+ years of top-tier investment bank (Goldman Sachs, CICC, Credit Suisse) management experience, we translate cycle-tested strategies into institution-grade, operational services. We use agile portfolio construction to defend against inflation, rely on deep institutional execution channels (at no additional cost to clients), and apply world-class risk-control standards to ensure operational practices are fully aligned with client interests.",
+    "implementation": {
+      "scope": "Implementation scope",
+      "item1": "Portfolio construction: Dynamically rebalance based on macro regimes to build resilient, cross-cycle portfolios that defend against inflation.",
+      "item2": "Trading & execution: Share top-tier investment bank execution channels so clients incur no additional fees while benefiting from efficient order execution.",
+      "item3": "Risk & monitoring: Apply bank-grade risk frameworks (e.g., Goldman-level) to monitor and safeguard cross-market asset safety boundaries in real time.",
+      "delivery": "Customer engagement model",
+      "delivery_desc": "Covers both project-based and retainer service models. We establish point-to-point communication and feedback workflows to meet each client’s customized business needs. Through meticulous daily tracking and rigorous execution standards, we ensure precise responsiveness and reliable delivery for both routine and unexpected requests."
+    },
+    "operations_intro": "Our operations backbone is designed to provide robust infrastructure support for complex cross-market investments. Through standardized process management and multi-dimensional validation mechanisms, we continuously track the post-trade lifecycle of assets. The team aligns execution details closely with clients' operational scenarios to ensure instructions are executed accurately, properly recorded, and presented with high transparency within a compliant framework.",
+    "operations_daily_title": "Daily operations",
+    "operations": {
+      "daily": {
+        "item1": "Reporting & disclosure: Establish regular communication rhythms and deliver clear, detailed asset status tracking and portfolio accounting reports according to client reporting cycles.",
+        "item2": "Compliance & audit coordination: Support internal and external audit and compliance reviews with full transaction trail records, document support, and cross-data reconciliation.",
+        "item3": "Clearing & reconciliation: Apply standardized post-trade reconciliation procedures to ensure integrity and traceability of cash flows, asset confirmation and distribution records."
+      },
+      "response_title": "Client response mechanism",
+      "response_desc": "We maintain a dedicated client support team for end-to-end follow-up on routine queries and bespoke operational requests. Leveraging formal feedback workflows, we ensure timely assessment and pragmatic handling of client needs. While upholding compliance standards, the team applies meticulous execution controls to resolve operational frictions and ensure smooth business operations."
+    },
+    "operations_desc": "Reporting and disclosure, compliance integration, data services."
   },
   "products": {
     "title": "Products",
@@ -56,6 +123,13 @@
     "a": "Product A",
     "b": "Product B",
     "c": "Product C"
+  },
+  "insight": {
+    "title": "Insight",
+    "muted": "Insight cards / perspective summaries / analysis (placeholder).",
+    "a": "Insight A",
+    "b": "Insight B",
+    "c": "Insight C"
   },
   "careers": {
     "title": "Careers",
@@ -70,7 +144,8 @@
     "email": "Email",
     "message": "Message",
     "submit": "Send",
-    "note": "* Demo only — no external emails are sent."
+    "note": "* Demo only — no external emails are sent.",
+    "address": "Room 1105，OfficePlus@Hip Shing Hong Sheung Wan Centre, 93-103 Wing Lok Street, Sheung Wan, Hong Kong"
   },
   "legal": {
     "privacy": "Privacy",
@@ -79,5 +154,39 @@
   },
   "notfound": {
     "title": "Page not found"
+  },
+  "person": {
+    "no_bio": "No detailed introduction available.",
+    "back_to_about": "← Back to About Us"
+  },
+  "privacy_policy": {
+    "title": "Privacy Policy",
+    "section1_title": "Commitment and Scope",
+    "section1_text": "Quantum Jade Investment Limited (hereinafter \"the Company\") attaches great importance to and is committed to protecting the privacy of our clients and website visitors. This Privacy Policy outlines how the Company collects, uses, retains, discloses, and protects your personal data. All such operations strictly comply with the Hong Kong Personal Data (Privacy) Ordinance (Chapter 486) and other applicable data protection regulations.",
+    "section2_title": "Collection and Use of Data",
+    "section2_intro": "When you visit our website or conduct business with the Company, we may collect your personal data. The collection purposes are limited to:",
+    "section2_point1": "Conducting baseline assessments and due diligence required for providing asset management and related financial services, including anti-money laundering compliance and know-your-customer (\"KYC\") requirements.",
+    "section2_point2": "Processing your service requests, sending administrative notifications, and project updates.",
+    "section2_point3": "Responding to lawful inquiries and reviews from regulatory authorities and judicial bodies.",
+    "section3_title": "Data Disclosure and Confidentiality",
+    "section3_text": "The Company treats all personal data obtained with strict confidentiality. We will never sell, rent, or transfer your personal data to any unrelated third parties without your explicit consent. However, we may conduct controlled disclosure within necessary scope where required by law or to fulfill core services (such as clearing institutions, custodian banks, and designated service providers providing necessary technical support).",
+    "section4_title": "Security Measures and Data Retention",
+    "section4_text": "The Company has deployed industry-standard physical, electronic, and administrative security architecture to prevent unauthorized access, modification, or data breaches. The retention period of personal data will strictly comply with Hong Kong applicable legal and regulatory record-keeping requirements. Upon expiration, such data will be thoroughly destroyed or anonymized.",
+    "section5_title": "Your Rights",
+    "section5_text": "Under applicable law, you have the right to access your personal data held by the Company and request correction of any inaccurate information. To exercise these rights or if you have any questions regarding data privacy, please contact us through our official email: info@quantum-jade.com."
+  },
+  "terms_policy": {
+    "title": "Terms of Service",
+    "section1_title": "Regulatory Authorization and Acceptance",
+    "section1_text": "Quantum Jade Investment Limited is a licensed corporation regulated by the Securities and Futures Commission of Hong Kong (SFC), with Central Entity Number (CE Number) BVU457. By accessing or using this website, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree with any part of these terms, please stop using this website immediately.",
+    "section2_title": "For Reference Only (Not Investment Advice)",
+    "section2_text": "All information, materials, analysis, and data contained on this website are for general reference only and do not constitute, nor should they be construed as, an offer, solicitation, or professional investment advice to buy or sell any securities, financial products, or participate in any specific trading strategy. Financial markets are inherently uncertain, and past performance is not indicative of future results.",
+    "section2_advice": "Before making any investment decision, you should seek independent financial, legal, and tax advice.",
+    "section3_title": "Intellectual Property",
+    "section3_text": "All content on this website, including but not limited to text, charts, logos, icons, images, and underlying code, is owned by the Company or its licensors and is protected by Hong Kong and international copyright, trademark, and other intellectual property laws. No one may copy, distribute, modify, or use such content for any commercial purpose without the Company’s prior written permission.",
+    "section4_title": "Disclaimer and Limitation of Liability",
+    "section4_text": "The Company strives to ensure the accuracy and timeliness of the information on the website, but makes no express or implied warranties as to the absolute accuracy, completeness, or error-free nature of the information. The Company and its affiliates shall not be liable for any direct, indirect, special, or consequential loss arising from your use of or reliance on the information on this website or from system failures or network delays.",
+    "section5_title": "Governing Law and Jurisdiction",
+    "section5_text": "These Terms of Service are governed by the laws of the Hong Kong Special Administrative Region. Any dispute arising from this website or these Terms shall be submitted to the exclusive jurisdiction of the courts of the Hong Kong Special Administrative Region."
   }
-}
+} 

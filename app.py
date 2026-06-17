@@ -1,4 +1,5 @@
 import os
+import io
 from flask import Flask, render_template, request, redirect, url_for, make_response, flash
 import i18n
 
@@ -6,33 +7,18 @@ import i18n
 ACHIEVEMENTS = [
     {
         "id": "clients",
-        "value": 120,           # 数值
-        "suffix": "+",          # 后缀，如 %、+
-        "label": {
-            "zh-CN": "服务客户",
-            "zh-TW": "服務客戶",
-            "en": "Clients"
-        }
+        "title_key": "home.achievement_cards.clients.title",
+        "description_key": "home.achievement_cards.clients.description"
     },
     {
         "id": "aum",
-        "value": 30,
-        "suffix": "B",
-        "label": {
-            "zh-CN": "资产规模（USD）",
-            "zh-TW": "資產規模（USD）",
-            "en": "AUM (USD)"
-        }
+        "title_key": "home.achievement_cards.aum.title",
+        "description_key": "home.achievement_cards.aum.description"
     },
     {
         "id": "years",
-        "value": 15,
-        "suffix": "y",
-        "label": {
-            "zh-CN": "行业经验",
-            "zh-TW": "行業經驗",
-            "en": "Years in business"
-        }
+        "title_key": "home.achievement_cards.years.title",
+        "description_key": "home.achievement_cards.years.description"
     }
 ]
 
@@ -96,24 +82,53 @@ def _latest_news(limit=3):
         import os, glob, datetime
         import frontmatter
         NEWS_DIR = os.path.join(os.path.dirname(__file__), "content", "news")
+        
+        # 确保目录存在
+        if not os.path.exists(NEWS_DIR):
+            print(f"[DEBUG] News directory not found: {NEWS_DIR}")
+            return []
+        
         posts = []
-        for path in glob.glob(os.path.join(NEWS_DIR, "*.md")):
-            post = frontmatter.load(path)
-            slug = os.path.splitext(os.path.basename(path))[0]
-            date = post.get("date")
+        md_files = glob.glob(os.path.join(NEWS_DIR, "*.md"))
+        print(f"[DEBUG] Found {len(md_files)} markdown files in {NEWS_DIR}")
+        
+        for path in md_files:
             try:
-                date = datetime.date.fromisoformat(str(date)) if date else None
-            except Exception:
-                date = None
-            posts.append({
-                "slug": slug,
-                "title": post.get("title", slug),
-                "summary": post.get("summary", ""),
-                "date": date
-            })
+                with open(path, 'r', encoding='utf-8') as fh:
+                    content = fh.read()
+                    if hasattr(frontmatter, 'load'):
+                        post = frontmatter.load(io.StringIO(content))
+                    elif hasattr(frontmatter, 'Frontmatter'):
+                        raw = frontmatter.Frontmatter.read(content)
+                        post = raw.get('attributes', {})
+                        post['content'] = raw.get('body', '')
+                    else:
+                        raise ImportError('Unsupported frontmatter package')
+                slug = os.path.splitext(os.path.basename(path))[0]
+                date = post.get("date")
+                try:
+                    date = datetime.date.fromisoformat(str(date)) if date else None
+                except Exception as e:
+                    print(f"[DEBUG] Date parsing error for {slug}: {e}")
+                    date = None
+                posts.append({
+                    "slug": slug,
+                    "title": post.get("title", slug),
+                    "summary": post.get("summary", ""),
+                    "date": date
+                })
+                print(f"[DEBUG] Loaded post: {slug}")
+            except Exception as e:
+                print(f"[DEBUG] Error loading {path}: {e}")
+                continue
+        
         posts.sort(key=lambda p: p["date"] or datetime.date.min, reverse=True)
+        print(f"[DEBUG] Returning {len(posts)} posts, limited to {limit}")
         return posts[:limit]
-    except Exception:
+    except Exception as e:
+        print(f"[DEBUG] Error in _latest_news: {e}")
+        import traceback
+        traceback.print_exc()
         return []
 
 def create_app():
@@ -140,7 +155,8 @@ def create_app():
 
     @app.route('/')
     def home():
-        return render_template('home.html', title='Home')
+        latest_posts = _latest_news(limit=3)
+        return render_template('home.html', title='Home', latest_posts=latest_posts, achievements=ACHIEVEMENTS)
 
     @app.route('/about')
     def about():
@@ -171,9 +187,9 @@ def create_app():
         return render_template('services_operations.html', title='Operations')
 
 
-    @app.route('/products')
-    def products():
-        return render_template('products.html', title='Products')
+    @app.route('/insight')
+    def insight():
+        return render_template('insight.html', title='Insight')
 
     @app.route('/careers')
     def careers():
@@ -190,6 +206,37 @@ def create_app():
     def privacy():
         return render_template('privacy.html', title='Privacy')
 
+    @app.route('/news')
+    def news():
+        all_posts = _latest_news(limit=100)
+        return render_template('news.html', title='News', posts=all_posts)
+
+    @app.route('/news/<slug>')
+    def news_detail(slug):
+        all_posts = _latest_news(limit=100)
+        post = next((p for p in all_posts if p["slug"] == slug), None)
+        if not post:
+            return render_template('404.html', title='Not found'), 404
+        # 读取完整的markdown内容
+        try:
+            import os, frontmatter
+            NEWS_DIR = os.path.join(os.path.dirname(__file__), "content", "news")
+            path = os.path.join(NEWS_DIR, f"{slug}.md")
+            with open(path, 'r', encoding='utf-8') as fh:
+                text = fh.read()
+                if hasattr(frontmatter, 'load'):
+                    md_file = frontmatter.load(io.StringIO(text))
+                    post["content"] = md_file.content
+                elif hasattr(frontmatter, 'Frontmatter'):
+                    raw = frontmatter.Frontmatter.read(text)
+                    post["content"] = raw.get("body", "")
+                else:
+                    raise ImportError('Unsupported frontmatter package')
+        except Exception as e:
+            print(f"[DEBUG] Error loading post content: {e}")
+            post["content"] = post.get("summary", "")
+        return render_template('news_detail.html', title=post["title"], post=post)
+
     @app.route('/terms')
     def terms():
         return render_template('terms.html', title='Terms')
@@ -203,4 +250,4 @@ def create_app():
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
