@@ -26,18 +26,20 @@
     "cta_contact": "Contact us",
     "adv": "Our strengths",
     "prod_core": "Core products",
-    "clients": "Clients & case studies",
+    "clients": {
+      "title": "Clients & case studies",
+      "cross_border": "Cross-border family office & wealth transfer: ",
+      "cross_border_desc": "Based in Hong Kong, this international financial hub, we provide customized offshore asset allocation solutions for ultra-high-net-worth families with a forward-looking global perspective, helping wealth to be steadily passed on across generations and cycles.",
+      "advisory": "Institutional advisory & customized portfolios: ",
+      "advisory_desc": "Rejecting product-driven traditional models, we always adhere to an absolutely neutral buy-side position. We deeply understand the underlying needs of institutional clients and build highly personalized investment portfolios that adapt to complex market environments for you.",
+      "tech": "Tech-enabled & rigorous risk management: ",
+      "tech_desc": "We deeply integrate cutting-edge financial technology into our research system. Through data-driven macroeconomic insights and systematic risk control models, we accurately capture alpha returns and provide a solid moat for every commitment you make."
+    },
     "clients_points": [
       "Cross-border asset allocation / Family office solutions",
       "Institutional advisory / Customized portfolios",
       "Tech-enabled research & risk management"
     ],
-    "clients.cross_border": "Cross-border family office & wealth transfer: ",
-    "clients.cross_border_desc": "Based in Hong Kong, this international financial hub, we provide customized offshore asset allocation solutions for ultra-high-net-worth families with a forward-looking global perspective, helping wealth to be steadily passed on across generations and cycles.",
-    "clients.advisory": "Institutional advisory & customized portfolios: ",
-    "clients.advisory_desc": "Rejecting product-driven traditional models, we always adhere to an absolutely neutral buy-side position. We deeply understand the underlying needs of institutional clients and build highly personalized investment portfolios that adapt to complex market environments for you.",
-    "clients.tech": "Tech-enabled & rigorous risk management: ",
-    "clients.tech_desc": "We deeply integrate cutting-edge financial technology into our research system. Through data-driven macroeconomic insights and systematic risk control models, we accurately capture alpha returns and provide a solid moat for every commitment you make.",
     "achievements": "Our achievements",
     "latest_news": "Latest news",
     "more": "All news →",
