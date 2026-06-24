@@ -1,60 +1,235 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>{{ t('home.latest_news', '最新动态') }}</h1>
-  
-  {% if posts and posts|length > 0 %}
-    <div class="news-list">
-      {% for p in posts %}
-      <article class="news-item">
-        <h3 class="news-title">
-          <a href="{{ url_for('news_detail', slug=p.slug) }}">{{ p.title }}</a>
-        </h3>
-        {% if p.date %}
-          <div class="news-date">{{ p.date.strftime('%Y-%m-%d') }}</div>
-        {% endif %}
-        {% if p.summary %}
-          <p class="news-summary">{{ p.summary }}</p>
-        {% endif %}
-        <a class="btn btn-sm" href="{{ url_for('news_detail', slug=p.slug) }}">{{ t('home.read_more', '阅读更多') }}</a>
-      </article>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p class="muted">{{ t('home.no_news', '暂无新闻') }}</p>
-  {% endif %}
 
-  <style>
-    .news-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      margin-top: 2rem;
+<!-- ================= 核心 CSS 样式 ================= -->
+<style>
+    /* 滚动轨道容器 */
+    .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        background-color: #fafafa;
+        /* 【重要调整】上下 padding 从 40px 增加到 60px，防止 1.4 倍放大时图片上下被裁剪 */
+        padding: 60px 0; 
+        white-space: nowrap;
+        position: relative;
+        margin-bottom: 40px; /* 减小底部边距，让三个板块更紧凑 */
+        border-radius: 8px;
     }
+
+    /* 包含图片的滚动带 */
+    .marquee-track {
+        display: inline-block;
+        animation: scroll-left 35s linear infinite; /* 稍微调慢一点速度，方便仔细看图 */
+    }
+
+    /* 悬停时整个轨道暂停 */
+    .marquee-container:hover .marquee-track {
+        animation-play-state: paused;
+    }
+
+    /* 单张图片的特效 */
+    .marquee-track img {
+        width: 320px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 25px;
+        cursor: pointer;
+        /* 添加了 z-index 基础属性，配合 hover 使用 */
+        position: relative;
+        z-index: 1;
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, z-index 0s;
+    }
+    
+    /* 【重要调整】悬停放大到 1.4倍，并确保它浮在最顶层 */
+    .marquee-track img:hover {
+        transform: scale(1.4);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        z-index: 10; /* 保证放大的图片压在左右两张图的上面 */
+    }
+
+    /* 滚动动画 */
+    @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* 灯光罩弹窗 */
+    #lightbox {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+    }
+    #lightbox img {
+        max-width: 90%; max-height: 90%;
+        border-radius: 8px;
+        box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+    }
+    #lightbox-close {
+        position: absolute; top: 30px; right: 40px;
+        color: white; font-size: 45px; font-weight: bold;
+        cursor: pointer; transition: color 0.2s ease;
+    }
+    #lightbox-close:hover { color: #ccc; }
+
+    /* 保留的新闻列表样式 */
+    .news-list { display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem; }
     .news-item {
-      border-left: 4px solid var(--primary, #007bff);
-      padding: 1.5rem;
-      background: rgba(0,0,0,0.02);
-      border-radius: 4px;
+        border-left: 4px solid var(--primary, #007bff);
+        padding: 1.5rem; background: #fff; border-radius: 0 8px 8px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
-    .news-title {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
+    .news-title { margin-top: 0; }
+    .news-date { color: #888; font-size: 0.9em; margin-bottom: 10px; }
+    
+    /* 统一的板块标题样式 */
+    .section-title {
+        font-size: 1.3em; font-weight: 600; color: #111; 
+        border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-bottom: 15px;
     }
-    .news-title a {
-      text-decoration: none;
-      color: inherit;
+</style>
+
+<!-- ================= 页面主体内容 ================= -->
+
+<!-- 页面头部 -->
+<div class="events-header" style="text-align: center; margin: 60px 0 40px;">
+    <h1 style="font-weight: 600; color: #111;">{{ t('home.latest_news', '最新动态') }}</h1>
+    <p style="color: #666; font-size: 1.1em; max-width: 700px; margin: 20px auto;">
+        记录量子基石的最新企业动态与团队风采。我们深知，稳健前行的动力源于极具凝聚力的专业团队。在这里，我们分享机构的发展步伐与团队共同成长的点滴印记。
+    </p>
+</div>
+
+<!-- ================= 板块集：三大照片滚动墙 ================= -->
+<section class="photo-walls" style="max-width: 1200px; margin: 0 auto 60px; padding: 0 20px;">
+    
+    <!-- 第 1 部分：开业仪式 -->
+    <div style="margin-bottom: 40px;">
+        <h3 class="section-title">开业仪式 (Grand Opening)</h3>
+        <div class="marquee-container">
+            <div class="marquee-track">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 1.jpg') }}" alt="开业照片1" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 2.jpg') }}" alt="开业照片2" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 3.jpg') }}" alt="开业照片3" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 4.jpg') }}" alt="开业照片4" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 5.jpg') }}" alt="开业照片5" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 6.jpg') }}" alt="开业照片6" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 8.jpg') }}" alt="开业照片8" onclick="openLightbox(this.src)">
+
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 1.jpg') }}" alt="开业照片1" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 2.jpg') }}" alt="开业照片2" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 3.jpg') }}" alt="开业照片3" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 4.jpg') }}" alt="开业照片4" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 5.jpg') }}" alt="开业照片5" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 6.jpg') }}" alt="开业照片6" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/opening-celebration/open 8.jpg') }}" alt="开业照片8" onclick="openLightbox(this.src)">
+</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第 2 部分：出席活动 -->
+    <div style="margin-bottom: 40px;">
+        <h3 class="section-title">出席活动 (Events & Conferences)</h3>
+        <div class="marquee-container">
+            <div class="marquee-track" style="animation-direction: reverse;">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 1.jpg') }}" alt="活动照片1" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 2.jpg') }}" alt="活动照片2" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 3.jpg') }}" alt="活动照片3" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 4.jpg') }}" alt="活动照片4" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 5.jpg') }}" alt="活动照片5" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 6.jpg') }}" alt="活动照片6" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 7.jpg') }}" alt="活动照片7" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 8.jpg') }}" alt="活动照片8" onclick="openLightbox(this.src)">
+
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 1.jpg') }}" alt="活动照片1" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 2.jpg') }}" alt="活动照片2" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 3.jpg') }}" alt="活动照片3" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 4.jpg') }}" alt="活动照片4" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 5.jpg') }}" alt="活动照片5" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 6.jpg') }}" alt="活动照片6" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 7.jpg') }}" alt="活动照片7" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/company-events/event 8.jpg') }}" alt="活动照片8" onclick="openLightbox(this.src)">
+</div>
+        </div>
+    </div>
+
+    <!-- 第 3 部分：团队风采 (Outing) -->
+    <div>
+        <h3 class="section-title">团队风采 (Team Outings)</h3>
+        <div class="marquee-container">
+            <div class="marquee-track">
+<div class="marquee-track">
+    <!-- 第 1 组图片 (你的9张真实Outing照片) -->
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 1.jpg') }}" alt="团建照片1" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 2.jpg') }}" alt="团建照片2" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 3.jpg') }}" alt="团建照片3" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 4.jpg') }}" alt="团建照片4" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 5.jpg') }}" alt="团建照片5" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 6.jpg') }}" alt="团建照片6" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 7.jpg') }}" alt="团建照片7" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 8.jpg') }}" alt="团建照片8" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 9.jpg') }}" alt="团建照片9" onclick="openLightbox(this.src)">
+
+    <!-- 第 2 组图片 (为了无缝滚动，必须完美重复上一组) -->
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 1.jpg') }}" alt="团建照片1" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 2.jpg') }}" alt="团建照片2" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 3.jpg') }}" alt="团建照片3" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 4.jpg') }}" alt="团建照片4" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 5.jpg') }}" alt="团建照片5" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 6.jpg') }}" alt="团建照片6" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 7.jpg') }}" alt="团建照片7" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 8.jpg') }}" alt="团建照片8" onclick="openLightbox(this.src)">
+    <img src="{{ url_for('static', filename='img/scrolling-wall/outing/outing 9.jpg') }}" alt="团建照片9" onclick="openLightbox(this.src)">
+</div>
+    </div>
+
+</section>
+
+<!-- ================= 板块二：企业动态与活动 (保持不变) ================= -->
+<section class="external-events" style="max-width: 1200px; margin: 0 auto 80px; padding: 0 20px;">
+    <h3 class="section-title">企业动态与活动 (Corporate Updates & Events)</h3>
+    
+    {% if posts and posts|length > 0 %}
+        <div class="news-list">
+            {% for p in posts %}
+            <article class="news-item">
+                <h3 class="news-title">
+                    <a href="{{ url_for('news_detail', slug=p.slug) }}" style="color: #111; text-decoration: none;">{{ p.title }}</a>
+                </h3>
+                {% if p.date %}
+                <div class="news-date">{{ p.date.strftime('%Y-%m-%d') }}</div>
+                {% endif %}
+                {% if p.summary %}
+                <p class="news-summary" style="color: #555; line-height: 1.6;">{{ p.summary }}</p>
+                {% endif %}
+                <a class="btn btn-sm btn-outline-primary" style="margin-top: 10px;" href="{{ url_for('news_detail', slug=p.slug) }}">{{ t('home.read_more', '阅读全文') }}</a>
+            </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="muted">{{ t('home.no_news', '暂无新闻内容') }}</p>
+    {% endif %}
+</section>
+
+<!-- ================= 弹窗层的 HTML & JS ================= -->
+<div id="lightbox" onclick="closeLightbox()">
+    <span id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="">
+</div>
+
+<script>
+    function openLightbox(imageSrc) {
+        document.getElementById('lightbox-img').src = imageSrc;
+        document.getElementById('lightbox').style.display = 'flex';
     }
-    .news-title a:hover {
-      color: var(--primary, #007bff);
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+        document.getElementById('lightbox-img').src = ''; 
     }
-    .news-date {
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 0.5rem;
-    }
-    .news-summary {
-      color: #555;
-      line-height: 1.6;
-    }
-  </style>
+</script>
+
 {% endblock %}

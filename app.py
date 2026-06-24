@@ -131,6 +131,16 @@ def _latest_news(limit=3):
         traceback.print_exc()
         return []
 
+
+def _render_markdown(text):
+    try:
+        import markdown
+        return markdown.markdown(text, extensions=['extra', 'sane_lists', 'smarty'])
+    except Exception as e:
+        print(f"[DEBUG] Markdown render failed: {e}")
+        return text
+
+
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key')
@@ -226,15 +236,16 @@ def create_app():
                 text = fh.read()
                 if hasattr(frontmatter, 'load'):
                     md_file = frontmatter.load(io.StringIO(text))
-                    post["content"] = md_file.content
+                    raw_content = md_file.content
                 elif hasattr(frontmatter, 'Frontmatter'):
                     raw = frontmatter.Frontmatter.read(text)
-                    post["content"] = raw.get("body", "")
+                    raw_content = raw.get("body", "")
                 else:
                     raise ImportError('Unsupported frontmatter package')
+            post["content"] = _render_markdown(raw_content)
         except Exception as e:
             print(f"[DEBUG] Error loading post content: {e}")
-            post["content"] = post.get("summary", "")
+            post["content"] = _render_markdown(post.get("summary", ""))
         return render_template('news_detail.html', title=post["title"], post=post)
 
     @app.route('/terms')
@@ -249,5 +260,27 @@ def create_app():
 
 app = create_app()
 
+def _get_ssl_context():
+    """Return SSL context for development.
+
+    If SSL_CERT_FILE and SSL_KEY_FILE are provided, use them.
+    If USE_HTTPS is enabled, use Werkzeug adhoc self-signed certificate.
+    """
+    cert_file = os.environ.get("SSL_CERT_FILE")
+    key_file = os.environ.get("SSL_KEY_FILE")
+    if cert_file and key_file:
+        return (cert_file, key_file)
+
+    use_https = os.environ.get("USE_HTTPS", "").lower()
+    if use_https in ("1", "true", "yes", "on"):
+        return "adhoc"
+
+    return None
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    ssl_context = _get_ssl_context()
+    if ssl_context:
+        print("Running HTTPS development server on https://127.0.0.1:5000")
+    else:
+        print("Running HTTP development server on http://127.0.0.1:5000")
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True, ssl_context=ssl_context)
