@@ -1,1 +1,77 @@
-{% extends 'base.html' %}{% block content %}<h1>{{ t('careers.title') }}</h1><p class='muted'>{{ t('careers.muted') }}</p><section class='grid-2'><div class='card'><h3>{{ t('careers.why') }}</h3><p>...</p></div><div class='card'><h3>{{ t('careers.openings') }}</h3><p>...</p></div></section>{% endblock %}
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- 页面头部与导语 -->
+<div class="careers-header" style="margin-bottom: 50px;">
+    <h1 style="font-weight: 600; color: #111; margin-bottom: 20px;">{{ t('careers.title') }}</h1>
+    <p style="font-size: 1.1em; color: #555; line-height: 1.7; max-width: 850px; text-align: justify;">
+        {{ t('careers.page_intro') }}
+    </p>
+</div>
+
+<!-- 为什么加入专区 (重构为三大核心优势) -->
+<section class="why-join-us-section" style="margin-bottom: 60px;">
+    <h3 style="font-size: 1.4em; font-weight: 600; color: #111; border-bottom: 2px solid #eaeaea; padding-bottom: 12px; margin-bottom: 30px;">
+        {{ t('careers.core_title') }}
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <!-- 优势 1 -->
+        <div style="background: #fff; padding: 35px; border: 1px solid #eaeaea; border-radius: 8px;">
+            <h4 style="font-size: 1.15em; font-weight: 600; color: #111; margin-bottom: 15px;">{{ t('careers.core_adv1_title') }}</h4>
+            <p style="font-size: 0.95em; color: #555; line-height: 1.6; text-align: justify; margin: 0;">
+                {{ t('careers.core_adv1_desc') }}
+            </p>
+        </div>
+        <!-- 优势 2 -->
+        <div style="background: #fff; padding: 35px; border: 1px solid #eaeaea; border-radius: 8px;">
+            <h4 style="font-size: 1.15em; font-weight: 600; color: #111; margin-bottom: 15px;">{{ t('careers.core_adv2_title') }}</h4>
+            <p style="font-size: 0.95em; color: #555; line-height: 1.6; text-align: justify; margin: 0;">
+                {{ t('careers.core_adv2_desc') }}
+            </p>
+        </div>
+        <!-- 优势 3 -->
+        <div style="background: #fff; padding: 35px; border: 1px solid #eaeaea; border-radius: 8px;">
+            <h4 style="font-size: 1.15em; font-weight: 600; color: #111; margin-bottom: 15px;">{{ t('careers.core_adv3_title') }}</h4>
+            <p style="font-size: 0.95em; color: #555; line-height: 1.6; text-align: justify; margin: 0;">
+                {{ t('careers.core_adv3_desc') }}
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 实习生计划专区 (紧接上方，占满全宽) -->
+<section class="intern-program-section" style="margin-top: 60px; margin-bottom: 40px; padding: 50px; background-color: #fafafa; border-radius: 8px; display: flex; gap: 50px;">
+    
+    <!-- 左侧：标题区 -->
+    <div class="intern-header" style="flex: 0 0 30%;">
+        <span style="color: #555; font-size: 0.85em; letter-spacing: 1.5px; text-transform: uppercase;">{{ t('careers.intern_label') }}</span>
+        <h2 style="margin-top: 15px; font-size: 1.8em; font-weight: 600; color: #111; line-height: 1.3;">{{ t('careers.intern_title') }}</h2>
+        <a href="mailto:info@quantum-jade.com?subject={{ t('careers.intern_apply_subject') }}" class="btn btn-primary" style="margin-top: 35px; display: inline-block;">{{ t('careers.intern_apply_button') }}</a>
+    </div>
+    
+    <!-- 右侧：详细内容区 -->
+    <div class="intern-details" style="flex: 1;">
+        <p style="font-size: 1.05em; line-height: 1.7; color: #333; margin-bottom: 35px; text-align: justify;">
+            {{ t('careers.intern_intro') }}
+        </p>
+        
+        <!-- 核心说明列表 -->
+        <div style="display: flex; flex-direction: column; gap: 25px;">
+            <div>
+                <strong style="color: #111; font-size: 1.05em;">{{ t('careers.intern_point1_title') }}</strong>
+                <p style="margin: 8px 0 0; font-size: 0.95em; color: #555; line-height: 1.6; text-align: justify;">{{ t('careers.intern_point1_desc') }}</p>
+            </div>
+            <div>
+                <strong style="color: #111; font-size: 1.05em;">{{ t('careers.intern_point2_title') }}</strong>
+                <p style="margin: 8px 0 0; font-size: 0.95em; color: #555; line-height: 1.6; text-align: justify;">{{ t('careers.intern_point2_desc') }}</p>
+            </div>
+            <div>
+                <strong style="color: #111; font-size: 1.05em;">{{ t('careers.intern_point3_title') }}</strong>
+                <p style="margin: 8px 0 0; font-size: 0.95em; color: #555; line-height: 1.6; text-align: justify;">{{ t('careers.intern_point3_desc') }}</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -30,7 +30,7 @@
               <a class="dropdown-item" href="{{ url_for('services_operations') }}">{{ t('services.c') }}</a>
             </div>
           </div>
-          <a class="nav-link {% if request.path.startswith('/insight') %}active{% endif %}" href="{{ url_for('insight') }}">{{ t('nav.insight') }}</a>
+          <a class="nav-link {% if request.path.startswith('/news') %}active{% endif %}" href="{{ url_for('news') }}">{{ t('nav.news_events') }}</a>
           <a class="nav-link {% if request.path.startswith('/careers') %}active{% endif %}" href="{{ url_for('careers') }}">{{ t('nav.careers') }}</a>
           <a class="nav-link {% if request.path.startswith('/contact') %}active{% endif %}" href="{{ url_for('contact') }}">{{ t('nav.contact') }}</a>
           

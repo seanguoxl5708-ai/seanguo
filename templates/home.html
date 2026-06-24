@@ -85,25 +85,27 @@
 </section>
 
 
-<!-- 5) 新闻（集成你的 Markdown 新闻模块则自动显示最近 N 篇） -->
+<!-- 5) News & Events -->
 <section class="section" id="news">
   <div class="container">
-    <div class="section-hd">
-      <h2>{{ t('home.latest_news', '最新动态') }}</h2>
-      <a class="more" href="/news">{{ t('home.more', '全部新闻 →') }}</a>
-    </div>
+    <h2>{{ t('home.news_events_title', 'News & Events') }}</h2>
+    <p class="muted">{{ t('home.news_events_intro', '') }}</p>
 
     {% if latest_posts and latest_posts|length > 0 %}
-    <div class="cards-3">
+    <section class="grid-3">
       {% for p in latest_posts %}
       <article class="card">
-        <h3 class="news-title"><a href="/news/{{ p.slug }}">{{ p.title }}</a></h3>
+        <h3><a href="/news/{{ p.slug }}">{{ p.title }}</a></h3>
         {% if p.date %}<div class="news-date">{{ p.date }}</div>{% endif %}
         {% if p.summary %}<p class="muted">{{ p.summary }}</p>{% endif %}
       </article>
       {% endfor %}
-    </div>
+    </section>
     {% endif %}
+
+    <div style="text-align: center; margin-top: 30px;">
+      <a class="btn" href="/news">{{ t('home.more', '全部新闻 →') }}</a>
+    </div>
   </div>
 </section>
 
