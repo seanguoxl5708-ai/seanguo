@@ -1,7 +1,7 @@
 {
   "brand": {
     "name": "Quantum Jade",
-    "tagline": "A Hong Kong-licensed independent asset manager managing over USD 1 billion with seasoned industry experience.",
+    "tagline": "A Hong Kong-licensed independent asset manager delivering bespoke global investment solutions to ultra-high-net-worth families and institutions.",
     "suffix": "Example"
   },
   "nav": {
@@ -59,8 +59,8 @@
         "description": "Acting as an independent, buy-side advocate, we deliver highly bespoke wealth management solutions to a select group of high-net-worth individuals. At Quantum Jade, we prioritize qualitative depth over mass expansion, ensuring an exceptional level of dedicated service and bandwidth for our core clients. Through tailored global asset allocation and sophisticated wealth structuring, we serve as a trusted fiduciary partner, safeguarding long-term capital appreciation and seamless intergenerational wealth transfer."
       },
       "aum": {
-        "title": "$1B+ AUM",
-        "description": "We currently oversee in excess of USD 1 billion in assets across discretionary mandates and advisory services. Leveraging a robust External Asset Manager (EAM) framework, we have established deep, foundational partnerships with Tier-1 global private banks and prime brokers. This infrastructure not only ensures that client assets are secured under the strictest global custody and segregation standards, but also empowers us to execute cross-border, multi-asset allocation strategies with institutional-grade precision."
+        "title": "Bespoke Wealth Management",
+        "description": "We deliver bespoke discretionary mandates and tailored advisory services designed exclusively for sophisticated investors. Our investment scope spans structured products, foreign exchange (FX), options, fixed income, and equities, strictly avoiding standardized or insurance-driven products to ensure complete alignment of interest. Leveraging a robust External Asset Manager (EAM) framework, we have established deep partnerships with Tier-1 global private banks and prime brokers, ensuring client assets are secured under the strictest global custody standards while executing multi-asset allocation with institutional-grade precision."
       },
       "years": {
         "title": "Tier-1 Heritage",
@@ -71,14 +71,15 @@
   "about": {
     "title": "About us",
     "muted": "Quantum Jade Investment Limited is an external asset manager (EAM) based in Hong Kong and holds Hong Kong SFC Type 1, Type 4, and Type 9 licenses (CE No. BVU457). As of 10 February 2026, the team advises approximately US$1 billion of assets. We charge management fees and performance fees, depending on client needs and discussions. These fees are typically structured at a rate in excess of the U.S. risk-free rate or under a high-water mark mechanism. The team is currently led by Mr. Wang Yuqi, who has over 20 years of banking experience, and consists of around 10 employees.",
+    "core_investments": "Our core investment capabilities span across structured products, foreign exchange (FX), options, fixed income (bonds), and equities, explicitly excluding any insurance brokerage services.",
     "mission": "Mission & vision",
     "timeline": "Milestones",
     "business_model": {
-      "title": "Business Model",
-      "description": "Clients open accounts at independent custodian banks. The EAM signs a Limited Power of Attorney (LPOA) to manage the assets but cannot withdraw funds. The custodian bank executes transactions based on the EAM's instructions under the client's authorization. Examples of our banking partners: DBS Bank, CITIC CLSA, Julius Baer Bank, Leonteq, VP Bank, LGT Bank. We compare private bank pricing and provide clients with the most suitable and unbiased options, fully independent of any banking product-pushing incentives."
+      "title": "Our Business Model",
+      "description": "Quantum Jade operates on a pure External Asset Manager (EAM) model, ensuring absolute alignment with our clients' interests. Your assets are securely custodied at top-tier global private banks. We actively manage portfolios and execute trades strictly through a Limited Power of Attorney (LPOA), with zero access to client funds. Leveraging deep partnerships with institutions such as DBS, CSC Financial, Julius Baer, Leonteq, VP Bank, and LGT Bank, we provide objective, cross-market pricing. Free from single-institution sales targets, we act solely as a buy-side advisor to secure the optimal assets and execution channels for you."
     },
     "diagram": {
-      "title": "Business Model Diagram",
+      "title": "EAM Architecture",
       "entities": "Entities: CLIENT, PRIVATE BANK, EAM, BUSINESS MODEL",
       "client_private_bank": "Client & Private Bank: Bank Account Opening-Agreement",
       "client_eam": "Client & EAM: Asset Management Agreement, Limited Power of Attorney",
@@ -90,9 +91,13 @@
   "services": {
     "title": "Services",
     "muted": "Service categories and descriptions (placeholder).",
+    "intro": "Quantum Jade delivers an end-to-end institutional wealth management platform. We seamlessly integrate objective advisory, agile execution, and robust operations to protect and grow your wealth across market cycles with absolute alignment of interest.",
     "a": "Advisory",
     "b": "Implementation",
     "c": "Operations",
+    "advisory_desc": "Objective, research-driven investment guidance. We design bespoke asset allocation frameworks and conduct rigorous due diligence, placing your interests above all.",
+    "implementation_desc": "Institutional-grade execution and portfolio construction. Leveraging top-tier investment bank channels, we deliver agile multi-asset trading and strict bank-grade risk monitoring.",
+    "operations_desc": "Robust infrastructure for complex cross-market investments. We ensure precision in post-trade reconciliation, transparent reporting, and strict adherence to compliance standards.",
     "consulting_intro": "As an independent external asset manager (EAM) based in Hong Kong, Quantum Jade Investment Limited is committed to providing objective and professional investment advisory services. Navigating the complex and ever-changing global capital markets, we operate independently from any single financial institution, placing your interests above all. Leveraging rigorous research logic and deep industry insights, we provide you with bespoke wealth management frameworks and strategic guidance to help you navigate market cycles and advance steadily through an ever-changing environment.",
     "consulting_desc": "Asset allocation, investment strategy design, specialized research.",
     "consulting": {

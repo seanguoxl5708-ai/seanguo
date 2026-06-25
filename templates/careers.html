@@ -2,9 +2,9 @@
 {% block content %}
 
 <!-- 页面头部与导语 -->
-<div class="careers-header" style="margin-bottom: 50px;">
-    <h1 style="font-weight: 600; color: #111; margin-bottom: 20px;">{{ t('careers.title') }}</h1>
-    <p style="font-size: 1.1em; color: #555; line-height: 1.7; max-width: 850px; text-align: justify;">
+<div class="careers-header fade-in-up" style="margin-bottom: 50px;">
+    <h1 class="fade-in-up" style="font-weight: 600; color: #111; margin-bottom: 20px;">{{ t('careers.title') }}</h1>
+    <p class="fade-in-up" style="font-size: 1.1em; color: #555; line-height: 1.7; max-width: 850px; text-align: justify;">
         {{ t('careers.page_intro') }}
     </p>
 </div>
@@ -16,21 +16,21 @@
     </h3>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
         <!-- 优势 1 -->
-        <div style="background: #fff; padding: 35px; border: 1px solid #eaeaea; border-radius: 8px;">
+        <div class="premium-card stagger-item delay-1" style="background: #fff; padding: 35px; border: 1px solid #eaeaea; border-radius: 8px;">
             <h4 style="font-size: 1.15em; font-weight: 600; color: #111; margin-bottom: 15px;">{{ t('careers.core_adv1_title') }}</h4>
             <p style="font-size: 0.95em; color: #555; line-height: 1.6; text-align: justify; margin: 0;">
                 {{ t('careers.core_adv1_desc') }}
             </p>
         </div>
         <!-- 优势 2 -->
-        <div style="background: #fff; padding: 35px; border: 1px solid #eaeaea; border-radius: 8px;">
+        <div class="premium-card stagger-item delay-2" style="background: #fff; padding: 35px; border: 1px solid #eaeaea; border-radius: 8px;">
             <h4 style="font-size: 1.15em; font-weight: 600; color: #111; margin-bottom: 15px;">{{ t('careers.core_adv2_title') }}</h4>
             <p style="font-size: 0.95em; color: #555; line-height: 1.6; text-align: justify; margin: 0;">
                 {{ t('careers.core_adv2_desc') }}
             </p>
         </div>
         <!-- 优势 3 -->
-        <div style="background: #fff; padding: 35px; border: 1px solid #eaeaea; border-radius: 8px;">
+        <div class="premium-card stagger-item delay-3" style="background: #fff; padding: 35px; border: 1px solid #eaeaea; border-radius: 8px;">
             <h4 style="font-size: 1.15em; font-weight: 600; color: #111; margin-bottom: 15px;">{{ t('careers.core_adv3_title') }}</h4>
             <p style="font-size: 0.95em; color: #555; line-height: 1.6; text-align: justify; margin: 0;">
                 {{ t('careers.core_adv3_desc') }}
@@ -40,7 +40,7 @@
 </section>
 
 <!-- 实习生计划专区 (紧接上方，占满全宽) -->
-<section class="intern-program-section" style="margin-top: 60px; margin-bottom: 40px; padding: 50px; background-color: #fafafa; border-radius: 8px; display: flex; gap: 50px;">
+<section class="intern-program-section premium-card stagger-item delay-4" style="margin-top: 60px; margin-bottom: 40px; padding: 50px; background-color: #fafafa; border-radius: 8px; display: flex; gap: 50px;">
     
     <!-- 左侧：标题区 -->
     <div class="intern-header" style="flex: 0 0 30%;">

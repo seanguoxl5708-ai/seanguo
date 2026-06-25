@@ -13,8 +13,8 @@
 <section class="section-hero" id="hero" style="--hero:url('{{ url_for('static', filename='img/hero-hk.jpg') }}')">
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <p class="hero-lead">{{ t('home.hero_lead', '1') }}</p>
-    <h1 class="hero-title">{{ t('home.hero_title', '1') }}</h1>
+    <p class="hero-lead fade-in-up">{{ t('home.hero_lead', '1') }}</p>
+    <h1 class="hero-title fade-in-up">{{ t('home.hero_title', '1') }}</h1>
     <div class="hero-cta">
       <a class="btn" href="#intro">{{ t('home.cta_services', '了解更多') }}</a>
       <a class="btn btn-secondary" href="{{ url_for('contact') }}">{{ t('home.cta_contact', '联系我们') }}</a>
@@ -32,8 +32,9 @@
         {{ t('about.muted', '立足香港，我们秉持独立客观的买方视角，以专业投研与科技赋能，为全球家族及机构客户提供跨越周期的定制化财富管理与传承方案。') }}
       </p>
       <p class="muted">
-
+      
       </p>
+      <p class="muted">{{ t('about.core_investments', "Our core investment capabilities span across structured products, foreign exchange (FX), options, fixed income (bonds), and equities, explicitly excluding any insurance brokerage services.") }}</p>
       <a class="btn" href="{{ url_for('about') }}">{{ t('nav.about', '关于我们') }}</a>
     </div>
     <div class="card">
@@ -48,10 +49,10 @@
 <!-- 3) 成就（公司定位与实力） -->
 <section class="section section-dark" id="achievements">
   <div class="container">
-    <h2>{{ t('home.achievements', '我们的成就') }}</h2>
+    <h2 class="fade-in-up">{{ t('home.achievements', '我们的成就') }}</h2>
     <div class="achievement-grid">
       {% for a in achievements %}
-      <article class="achievement-card">
+      <article class="achievement-card stagger-item delay-{{ loop.index }}">
         <h3 class="achievement-title">{{ t(a.title_key, '') }}</h3>
         <p class="muted">{{ t(a.description_key, '') }}</p>
       </article>
@@ -63,19 +64,19 @@
 <!-- 4) 业务模块（跳转到 /services） -->
 <section class="section" id="services">
   <div class="container">
-    <h2>{{ t('services.title', '服务') }}</h2>
+    <h2 class="fade-in-up">{{ t('services.title', '服务') }}</h2>
     <div class="cards-3">
-      <article class="card card--line">
+      <article class="premium-card stagger-item delay-1">
         <h3>{{ t('services.a', '咨询顾问') }}</h3>
         <p class="muted">{{ t('services.consulting_desc', '资产配置、投策设计、专项研究。') }}</p>
         <a class="btn btn-sm" href="{{ url_for('services_consulting') }}">{{ t('home.cta_services', '了解更多') }}</a>
       </article>
-      <article class="card card--line">
+      <article class="premium-card stagger-item delay-2">
         <h3>{{ t('services.b', '技术实施') }}</h3>
         <p class="muted">{{ t('services.implementation_desc', '组合构建、交易执行、风控监测。') }}</p>
         <a class="btn btn-sm" href="{{ url_for('services_implementation') }}">{{ t('home.cta_services', '了解更多') }}</a>
       </article>
-      <article class="card card--line">
+      <article class="premium-card stagger-item delay-3">
         <h3>{{ t('services.c', '运维支持') }}</h3>
         <p class="muted">{{ t('services.operations_desc', '报告与披露、合规对接、数据服务。') }}</p>
         <a class="btn btn-sm" href="{{ url_for('services_operations') }}">{{ t('home.cta_services', '了解更多') }}</a>
@@ -88,16 +89,17 @@
 <!-- 5) News & Events -->
 <section class="section" id="news">
   <div class="container">
-    <h2>{{ t('home.news_events_title', 'News & Events') }}</h2>
-    <p class="muted">{{ t('home.news_events_intro', '') }}</p>
+    <h2 class="section-title fade-in-up">{{ t('home.news_events_title', 'News & Events') }}</h2>
+    <p class="muted fade-in-up">{{ t('home.news_events_intro', '') }}</p>
 
     {% if latest_posts and latest_posts|length > 0 %}
-    <section class="grid-3">
+    <section class="news-grid">
       {% for p in latest_posts %}
-      <article class="card">
-        <h3><a href="/news/{{ p.slug }}">{{ p.title }}</a></h3>
+      <article class="premium-card stagger-item delay-{{ loop.index }}">
+        <h3 class="news-title"><a href="/news/{{ p.slug }}">{{ p.title }}</a></h3>
         {% if p.date %}<div class="news-date">{{ p.date }}</div>{% endif %}
-        {% if p.summary %}<p class="muted">{{ p.summary }}</p>{% endif %}
+        {% if p.summary %}<p class="news-summary">{{ p.summary }}</p>{% endif %}
+        <a class="premium-btn" href="/news/{{ p.slug }}">{{ t('home.read_more', '阅读全文 →') }}</a>
       </article>
       {% endfor %}
     </section>

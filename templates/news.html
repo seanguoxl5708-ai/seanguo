@@ -96,9 +96,9 @@
 <!-- ================= 页面主体内容 ================= -->
 
 <!-- 页面头部 -->
-<div class="events-header" style="text-align: center; margin: 60px 0 40px;">
-    <h1 style="font-weight: 600; color: #111;">{{ t('home.latest_news', '最新动态') }}</h1>
-    <p style="color: #666; font-size: 1.1em; max-width: 700px; margin: 20px auto;">
+<div class="events-header fade-in-up" style="text-align: center; margin: 60px 0 40px;">
+    <h1 class="fade-in-up" style="font-weight: 600; color: #111;">{{ t('home.latest_news', '最新动态') }}</h1>
+    <p class="fade-in-up" style="color: #666; font-size: 1.1em; max-width: 700px; margin: 20px auto;">
         记录量子基石的最新企业动态与团队风采。我们深知，稳健前行的动力源于极具凝聚力的专业团队。在这里，我们分享机构的发展步伐与团队共同成长的点滴印记。
     </p>
 </div>
@@ -159,7 +159,7 @@
 
     <!-- 第 3 部分：团队风采 (Outing) -->
     <div>
-        <h3 class="section-title">团队风采 (Team Outings)</h3>
+        <h3 class="section-title">团队建设 (Team Outings)</h3>
         <div class="marquee-container">
             <div class="marquee-track">
 <div class="marquee-track">
@@ -196,7 +196,7 @@
     {% if posts and posts|length > 0 %}
         <div class="news-list">
             {% for p in posts %}
-            <article class="news-item">
+            <article class="news-item premium-card stagger-item delay-{{ loop.index }}">
                 <h3 class="news-title">
                     <a href="{{ url_for('news_detail', slug=p.slug) }}" style="color: #111; text-decoration: none;">{{ p.title }}</a>
                 </h3>

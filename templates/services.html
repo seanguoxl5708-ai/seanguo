@@ -1,1 +1,18 @@
-{% extends 'base.html' %}{% block content %}<h1>{{ t('services.title') }}</h1><p class='muted'>{{ t('services.muted') }}</p><section class='grid-3'><div class='card'><h3>{{ t('services.a') }}</h3><p>...</p></div><div class='card'><h3>{{ t('services.b') }}</h3><p>...</p></div><div class='card'><h3>{{ t('services.c') }}</h3><p>...</p></div></section>{% endblock %}
+{% extends 'base.html' %}{% block content %}
+<h1 class="fade-in-up">{{ t('services.title') }}</h1>
+<p class='muted fade-in-up'>{{ t('services.intro') }}</p>
+<section class='grid-3'>
+  <div class='premium-card stagger-item delay-1'>
+    <h3>{{ t('services.a') }}</h3>
+    <p>{{ t('services.advisory_desc') }}</p>
+  </div>
+  <div class='premium-card stagger-item delay-2'>
+    <h3>{{ t('services.b') }}</h3>
+    <p>{{ t('services.implementation_desc') }}</p>
+  </div>
+  <div class='premium-card stagger-item delay-3'>
+    <h3>{{ t('services.c') }}</h3>
+    <p>{{ t('services.operations_desc') }}</p>
+  </div>
+</section>
+{% endblock %}

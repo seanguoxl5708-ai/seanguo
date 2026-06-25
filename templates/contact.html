@@ -1,1 +1,203 @@
-{% extends 'base.html' %}{% block content %}<h1>{{ t('contact.title') }}</h1><p class='muted'>{{ t('contact.muted') }}</p><form class='form' method='post' action='{{ url_for('contact') }}'><label>{{ t('contact.name') }}</label><input type='text' name='name' required /><label>{{ t('contact.email') }}</label><input type='email' name='email' placeholder='you@example.com' required /><label>{{ t('contact.message') }}</label><textarea name='message' rows='5' required></textarea><button type='submit' class='btn'>{{ t('contact.submit') }}</button></form><div class='muted small'>{{ t('contact.note') }}</div>{% endblock %}
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- ================= 极简高级版 Contact CSS ================= -->
+<style>
+    /* 页面整体背景和间距 */
+    .contact-page-wrapper {
+        background-color: #fcfcfc;
+        padding: 80px 20px;
+        min-height: 70vh;
+    }
+
+    /* 头部标题区域 */
+    .contact-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    .contact-header h1 {
+        font-size: 2.5em;
+        font-weight: 600;
+        color: #111;
+        margin-bottom: 15px;
+    }
+    .contact-header p {
+        color: #666;
+        font-size: 1.1em;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    /* 左右双列容器 */
+    .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1100px;
+        margin: 0 auto;
+        gap: 50px;
+        align-items: flex-start;
+    }
+
+    /* 左侧：联系信息 */
+    .contact-info {
+        flex: 1;
+        min-width: 300px;
+        padding: 20px 0;
+    }
+    .contact-info h3 {
+        font-size: 1.4em;
+        color: #222;
+        margin-bottom: 25px;
+        font-weight: 600;
+        border-bottom: 2px solid #eaeaea;
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+    .info-item {
+        margin-bottom: 30px;
+    }
+    .info-item h4 {
+        font-size: 0.95em;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+    .info-item p {
+        color: #333;
+        font-size: 1.1em;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* 右侧：表单卡片 */
+    .contact-form-card {
+        flex: 1.2;
+        min-width: 320px;
+        padding: 40px 50px;
+    }
+    .form-group {
+        margin-bottom: 25px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #444;
+        font-weight: 500;
+        font-size: 0.95em;
+    }
+    .form-control {
+        width: 100%;
+        padding: 14px 18px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1em;
+        color: #333;
+        background-color: #fafafa;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+    .form-control:focus {
+        outline: none;
+        border-color: #007bff;
+        background-color: #fff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+    textarea.form-control {
+        resize: vertical;
+        min-height: 150px;
+    }
+
+    /* 发送按钮 */
+    .submit-btn {
+        width: 100%;
+        padding: 16px;
+        background-color: #111;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.05em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.1s ease;
+    }
+    .submit-btn:hover {
+        background-color: #007bff; /* 悬停变为品牌蓝 */
+    }
+    .submit-btn:active {
+        transform: scale(0.98);
+    }
+    
+    .demo-notice {
+        font-size: 0.85em;
+        color: #999;
+        text-align: center;
+        margin-top: 15px;
+        display: block;
+    }
+
+    /* 响应式调整（在手机端自动变为上下排列） */
+    @media (max-width: 768px) {
+        .contact-container { flex-direction: column; }
+        .contact-form-card { padding: 30px 20px; }
+    }
+</style>
+
+<!-- ================= 页面主体内容 ================= -->
+<div class="contact-page-wrapper">
+    <div class="contact-header fade-in-up">
+        <h1 class="fade-in-up">{{ t('contact.title', '联系我们 / Contact Us') }}</h1>
+        <p class="fade-in-up">{{ t('contact.subtitle', '我们期待倾听您的需求。无论是关于资产配置方案、机构合作，还是其他业务咨询，请随时与我们取得联系。') }}</p>
+    </div>
+
+    <div class="contact-container">
+        
+        <!-- 左侧：公司联系信息 -->
+        <div class="contact-info premium-card stagger-item delay-1">
+            <h3>Quantum Jade Investment Limited</h3>
+            
+            <div class="info-item">
+                <h4>{{ t('contact.headquarters', 'Hong Kong Headquarters') }}</h4>
+                <p>香港特别行政区<br>
+                   （具体办公地址可在此处补充）</p>
+            </div>
+            
+            <div class="info-item">
+                <h4>{{ t('contact.email', 'Email Address') }}</h4>
+                <p><a href="mailto:info@quantumjade.com" style="color: #007bff; text-decoration: none;">info@quantumjade.com</a></p>
+            </div>
+            
+            <div class="info-item">
+                <h4>{{ t('contact.hours', 'Business Hours') }}</h4>
+                <p>Mon - Fri: 9:00 AM - 6:00 PM (HKT)</p>
+            </div>
+        </div>
+
+        <!-- 右侧：高级留言表单 -->
+        <div class="contact-form-card premium-card stagger-item delay-2">
+            <form action="#" method="POST" onsubmit="event.preventDefault(); const name=document.getElementById('name').value; const email=document.getElementById('email').value; const msg=document.getElementById('message').value; window.location.href='mailto:info@quantum-jade.com?subject='+encodeURIComponent('Website Contact Inquiry from '+name)+'&body='+encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\nMessage:\n'+msg);">
+                
+                <div class="form-group">
+                    <label for="name">{{ t('contact.your_name', 'Your Name') }}</label>
+                    <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">{{ t('contact.your_email', 'Email Address') }}</label>
+                    <input type="email" id="email" class="form-control" placeholder="you@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">{{ t('contact.message', 'Message') }}</label>
+                    <textarea id="message" class="form-control" placeholder="How can we help you?" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">{{ t('contact.send', 'Send Message') }}</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -44,7 +44,33 @@ body{background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,
 .lead{color:var(--muted);max-width:720px}
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:30px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+
+/* News & Events text style */
+.news-title { margin-top: 0; margin-bottom: 10px; font-weight: 600; font-size: 1.3em; color: #111; }
+.news-title a { color: inherit; text-decoration: none; }
+.news-title a:hover { text-decoration: underline; }
+.news-date { color: #888; font-size: 0.9em; margin-bottom: 15px; display: block; }
+.news-summary { color: #555; line-height: 1.6; margin-bottom: 18px; }
+.premium-btn { display: inline-flex; align-items: center; gap: 6px; color: #007bff; text-decoration: none; font-weight: 500; }
+.premium-btn:hover { text-decoration: underline; }
+
+/* 全局动画和 premium-card 风格 */
+.fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+
+.premium-card { background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease; }
+.premium-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); border-color: #eaeaea; }
+
+.stagger-item { opacity: 0; transform: translateY(20px); }
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+
+.delay-1 { animation: fadeInUp 0.8s ease-out 0.1s forwards; }
+.delay-2 { animation: fadeInUp 0.8s ease-out 0.25s forwards; }
+.delay-3 { animation: fadeInUp 0.8s ease-out 0.4s forwards; }
+.delay-4 { animation: fadeInUp 0.8s ease-out 0.55s forwards; }
+.delay-5 { animation: fadeInUp 0.8s ease-out 0.7s forwards; }
+
 .muted{color:var(--muted)}
 .small{font-size:12px}
 .flash{background:#16361d;border:1px solid #2a7a47;color:#cfe8d6;border-radius:10px;padding:10px;margin:12px 0}
@@ -233,6 +259,7 @@ html { scroll-behavior: smooth; }
 
 /* 网格与卡片（沿用你原有的命名） */
 .cards-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.premium-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-top: 40px; }
 .card--line{ padding:18px 16px; }
 .more{ color: inherit; text-decoration: none; opacity:.9; }
 .more:hover{ text-decoration: underline; }

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-  <p class="lead">{{ t('about.muted') }}</p>
+  <p class="lead fade-in-up">{{ t('about.muted') }}</p>
 
   {% set cur = current_lang if current_lang is defined else 'en' %}
 
   <section class="grid-3">
     {% for p in people %}
-      <article class="card person">
+      <article class="card person premium-card stagger-item delay-{{ loop.index }}">
         <img class="avatar" src="{{ url_for('static', filename=p.photo) }}" alt="{{ p.name }}">
         <h3 class="name">
           {{ p.name[cur] if p.name and p.name.get(cur) else (p.name['en'] if p.name and p.name.get('en') else '') }}
@@ -24,22 +24,47 @@
     {% endfor %}
   </section>
 
-  <section class="business-model">
+  <section class="business-model premium-card stagger-item delay-4">
     <h2>{{ t('about.business_model.title') }}</h2>
     <p>{{ t('about.business_model.description') }}</p>
   </section>
 
   <section class="diagram">
-    <h2>{{ t('about.diagram.title') }}</h2>
-    <p>{{ t('about.diagram.entities') }}</p>
-    <ul>
-      <li>{{ t('about.diagram.client_private_bank') }}</li>
-      <li>{{ t('about.diagram.client_eam') }}</li>
-      <li>{{ t('about.diagram.private_bank_eam') }}</li>
-    </ul>
+    <h4 style="margin-top: 40px; color: #111;">{{ t('about.diagram.title') }}</h4>
+    <div class="eam-diagram-container">
+        <div class="eam-nodes">
+            <div class="eam-node">
+                <h4>CLIENT</h4>
+                <p>Asset Owner</p>
+            </div>
+            <div class="eam-node" style="background: #111; color: #fff; border-color: #111;">
+                <h4 style="color: #fff;">EAM</h4>
+                <p style="color: #ccc;">Quantum Jade</p>
+            </div>
+            <div class="eam-node">
+                <h4>PRIVATE BANK</h4>
+                <p>Custodian & Execution</p>
+            </div>
+        </div>
+        
+        <div class="eam-relations">
+            <div class="relation-item">
+                <strong>Client &larr;&rarr; Private Bank</strong>
+                <span>Bank Account Opening Agreement (Custody)</span>
+            </div>
+            <div class="relation-item">
+                <strong>Client &larr;&rarr; EAM</strong>
+                <span>Asset Management Agreement & LPOA</span>
+            </div>
+            <div class="relation-item">
+                <strong>EAM &larr;&rarr; Private Bank</strong>
+                <span>Co-operation & Profit Sharing Agreement</span>
+            </div>
+        </div>
+    </div>
   </section>
 
-  <section class="disclaimer">
+  <section class="disclaimer premium-card stagger-item delay-6">
     <p class="muted">{{ t('about.disclaimer') }}</p>
   </section>
 
@@ -48,6 +73,15 @@
     .person .avatar{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;margin-bottom:10px;object-position: center 20%; }
     .person .name{margin:6px 0 2px}
     .person .title{color:#9aa0aa;font-size:14px;margin-bottom:6px}
+    .eam-diagram-container { margin: 40px 0; padding: 40px; background: #fafafa; border-radius: 12px; border: 1px solid #eaeaea; text-align: center; }
+    .eam-nodes { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; position: relative; max-width: 800px; margin: 0 auto; }
+    .eam-node { flex: 1; min-width: 200px; background: #fff; padding: 25px 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 2px solid #111; position: relative; z-index: 2; }
+    .eam-node h4 { margin: 0 0 10px 0; color: #111; font-size: 1.2em; font-weight: 600; }
+    .eam-node p { margin: 0; color: #666; font-size: 0.9em; line-height: 1.5; }
+    .eam-relations { margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: left; }
+    .relation-item { background: #fff; padding: 15px 20px; border-left: 3px solid #007bff; border-radius: 0 6px 6px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    .relation-item strong { display: block; color: #111; margin-bottom: 5px; font-size: 0.95em; }
+    .relation-item span { color: #555; font-size: 0.85em; }
     @media (max-width: 900px){ .grid-3{grid-template-columns:1fr} }
   </style>
 {% endblock %}
